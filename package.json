@@ -1,15 +1,26 @@
 {
   "name": "alertswap-backend",
   "version": "1.0.50",
+  "module": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@prisma/adapter-pg": "^7.7.0",
+    "@prisma/client": "^7.7.0",
+    "elysia": "latest",
+    "pg": "^8.20.0"
   },
   "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
+    "@types/pg": "^8.20.0",
+    "bun-types": "latest",
+    "oxfmt": "^0.45.0",
+    "oxlint": "^1.60.0",
+    "prisma": "^7.7.0"
+  }
 }
