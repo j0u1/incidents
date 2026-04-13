@@ -1,5 +1,5 @@
 {
-  "name": "alertswap-backend",
+  "name": "taskswap-backend",
   "version": "1.0.50",
   "module": "src/index.js",
   "scripts": {
