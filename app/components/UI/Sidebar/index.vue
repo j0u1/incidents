@@ -42,7 +42,7 @@ let clickCollapsed = () => {
         class="relative h-screen flex flex-col gap-4 duration-300 transition-all border-r border-border"
         :class="[isCollapsed ? 'w-19.75' : 'w-3/14 min-w-56']"
     >
-        <div @click="clickCollapsed" class="absolute right-0 h-full w-1 cursor-col-resize" />
+        <div @click="clickCollapsed" class="absolute -right-1 h-full w-2 cursor-col-resize" />
         <UISidebarHead :isCollapsed="isCollapsed" @toggle="clickCollapsed" />
         <hr class="h-0.5 w-full border-border" />
         <div class="space-y-3.5 px-3" :class="[isCollapsed && 'w-fit']">
