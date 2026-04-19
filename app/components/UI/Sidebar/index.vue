@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { LogInIcon } from "@lucide/vue";
+import { LogInIcon, LogOutIcon, ChevronDownIcon } from "@lucide/vue";
 import { useAuthClient } from "~/composables/useAuthClient";
 import { padding } from "~/data/dynamicStyles";
 import { pages } from "~/data/pages";
 
 const route = useRoute();
 const isCollapsed = ref(false);
+const dropDown = ref(false);
 const authClient = useAuthClient();
 const session = authClient.useSession();
 
@@ -39,7 +40,7 @@ let clickCollapsed = () => {
 <template>
     <aside
         class="relative h-screen flex flex-col gap-4 duration-300 transition-all border-r border-border"
-        :class="[isCollapsed ? 'w-19.75' : 'w-2/12 min-w-56']"
+        :class="[isCollapsed ? 'w-19.75' : 'w-3/14 min-w-56']"
     >
         <div @click="clickCollapsed" class="absolute right-0 h-full w-1 cursor-col-resize" />
         <UISidebarHead :isCollapsed="isCollapsed" @toggle="clickCollapsed" />
@@ -72,8 +73,13 @@ let clickCollapsed = () => {
             </NuxtLink>
         </div>
         <div
-            class="absolute border border-border rounded-lg flex items-center gap-2.5 duration-300 transition-all"
-            :class="[padding, isCollapsed ? 'bottom-4 left-1/2 -translate-x-1/2 size-12.5' : 'bottom-4 left-4 right-4']"
+            @click="session.data ? (dropDown = !dropDown) : ''"
+            class="absolute border border-border rounded-lg flex items-center gap-2.5 duration-200 transition-all cursor-pointer z-10 group"
+            :class="[
+                padding,
+                isCollapsed ? 'bottom-4 left-1/2 -translate-x-1/2 size-12.5' : 'bottom-4 left-4 right-4',
+                dropDown ? 'bg-secondary' : 'bg-bg',
+            ]"
         >
             <button
                 v-if="!session.data"
@@ -85,14 +91,31 @@ let clickCollapsed = () => {
                 Войти
             </button>
 
-            <div v-else class="flex items-center gap-2.5">
+            <div v-else class="relative flex items-center gap-2.5 w-full">
                 <UserAvatar :src="session.data.user.image ?? undefined" :class="isCollapsed ? 'size-6' : 'size-10'" />
                 <div v-if="!isCollapsed">
                     <p>{{ session.data.user.name }}</p>
                     <p class="text-sm text-light-gray">{{ session.data.user.email }}</p>
                 </div>
-                <!-- <button @click="signOut" type="button" class="text-sm text-light-gray hover:text-primary">Выйти</button> -->
+                <ChevronDownIcon
+                    class="absolute right-0 size-4.5 text-gray shrink-0 duration-300 transition-all"
+                    :class="dropDown ? 'rotate-180' : 'group-hover:rotate-90'"
+                />
             </div>
+        </div>
+        <div
+            class="absolute left-4 right-4 border border-border rounded-lg flex flex-col items-center gap-2.5 duration-300 transition-all bg-secondary origin-bottom"
+            :class="[padding, dropDown ? 'bottom-24 scale-100' : 'bottom-4 scale-75']"
+        >
+            <button
+                @click="signOut"
+                type="button"
+                class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-300 cursor-pointer"
+                :class="padding"
+            >
+                <LogOutIcon class="size-4.5" />
+                Выйти
+            </button>
         </div>
     </aside>
 </template>
