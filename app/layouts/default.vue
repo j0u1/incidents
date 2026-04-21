@@ -35,50 +35,55 @@ async function signOut() {
         <NuxtLink class="duration-300 transition-all active:scale-105" to="/">
             <IconsLogosFull />
         </NuxtLink>
-        <div class="relative">
-            <button
-                v-if="!session.data"
-                type="button"
-                class="flex items-center gap-1.5 text-sm text-light-gray hover:text-primary size-full cursor-pointer duration-300 transition-all border border-border rounded-lg"
-                :class="[padding]"
-                @click="signInWithGithub"
-            >
-                <LogInIcon class="size-4.5" />
-                Войти
-            </button>
-            <div
-                @click="session.data ? (dropDown = !dropDown) : ''"
-                v-else
-                class="relative flex items-center gap-2.5 w-full select-none cursor-pointer"
-            >
-                <div>
-                    <p>
-                        {{ session.data.user.name }}
-                    </p>
-                </div>
-                <UserAvatar :src="session.data.user.image ?? undefined" class="size-8" />
-            </div>
-            <div
-                class="absolute border border-border rounded-lg flex flex-col items-center gap-2.5 duration-400 transition-all bg-secondary origin-top-right w-56 right-0"
-                :class="[!session.data ? 'opacity-0' : 'opacity-100', padding, dropDown ? 'top-12 scale-100' : 'top-8 scale-0']"
-            >
-                <NuxtLink
-                    href="/dashboard"
-                    class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-primary hover:text-primary duratiom-300 transition-300 cursor-pointer"
-                    :class="padding"
-                >
-                    <PanelsTopLeftIcon class="size-4.5" />
-                    Обзор
-                </NuxtLink>
+        <div class="flex items-center gap-4">
+            <NuxtLink to="//github.com/j0u1/taskswap-frontend" target="_blank">
+                <IconsGitHub class="fill-gray hover:fill-light-gray duration-300 transition-all hover:scale-105 active:105 size-6" />
+            </NuxtLink>
+            <div class="relative">
                 <button
-                    @click="signOut"
+                    v-if="!session.data"
                     type="button"
-                    class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-300 cursor-pointer"
-                    :class="padding"
+                    class="flex items-center gap-1.5 text-sm text-light-gray hover:text-primary size-full cursor-pointer duration-300 transition-all border border-border rounded-lg"
+                    :class="[padding]"
+                    @click="signInWithGithub"
                 >
-                    <LogOutIcon class="size-4.5" />
-                    Выйти
+                    <LogInIcon class="size-4.5" />
+                    Войти
                 </button>
+                <div
+                    @click="session.data ? (dropDown = !dropDown) : ''"
+                    v-else
+                    class="relative flex items-center gap-2.5 w-full select-none cursor-pointer"
+                >
+                    <div>
+                        <p>
+                            {{ session.data.user.name }}
+                        </p>
+                    </div>
+                    <UserAvatar :src="session.data.user.image ?? undefined" class="size-8" />
+                </div>
+                <div
+                    class="absolute border border-border rounded-lg flex flex-col items-center gap-2.5 duration-400 transition-all bg-secondary origin-top-right w-56 right-0"
+                    :class="[!session.data ? 'opacity-0' : 'opacity-100', padding, dropDown ? 'top-12 scale-100' : 'top-8 scale-0']"
+                >
+                    <NuxtLink
+                        href="/dashboard"
+                        class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-primary hover:text-primary duratiom-300 transition-300 cursor-pointer"
+                        :class="padding"
+                    >
+                        <PanelsTopLeftIcon class="size-4.5" />
+                        Обзор
+                    </NuxtLink>
+                    <button
+                        @click="signOut"
+                        type="button"
+                        class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-300 cursor-pointer"
+                        :class="padding"
+                    >
+                        <LogOutIcon class="size-4.5" />
+                        Выйти
+                    </button>
+                </div>
             </div>
         </div>
     </header>
