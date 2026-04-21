@@ -48,7 +48,7 @@ async function signInWithGithub() {
             <LayoutIcon class="size-4.5" />
             Перейти в Обзор
         </NuxtLink>
-        <NuxtImg class="max-w-11/12 mx-auto rounded-2xl outline outline-border w-full" src="/images/dashboard_page.png" />
+        <NuxtImg class="max-w-11/12 mx-auto rounded-2xl outline outline-border w-full" src="/images/dashboard_page.webp" />
     </main>
     <section class="flex flex-col px-20"></section>
 </template>
