@@ -8,7 +8,9 @@
     "dev:node": "node node_modules/.bin/nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
   },
   "dependencies": {
     "@lucide/vue": "^1.8.0",
@@ -21,6 +23,7 @@
     "vue-router": "^5.0.4"
   },
   "devDependencies": {
-    "@nuxt/image": "^2.0.0"
+    "@nuxt/image": "^2.0.0",
+    "oxlint": "^1.61.0"
   }
 }

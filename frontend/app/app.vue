@@ -2,5 +2,5 @@
     <NuxtRouteAnnouncer class="absolute" />
     <NuxtLayout>
         <NuxtPage />
-    </NuxtLayout>
+        </NuxtLayout>
 </template>
