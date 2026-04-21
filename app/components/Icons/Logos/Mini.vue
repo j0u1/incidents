@@ -1,5 +1,22 @@
+<script setup lang="ts">
+const props = withDefaults(
+    defineProps<{
+        size?: number;
+    }>(),
+    {
+        size: 6.5,
+    },
+);
+
+const logoSize = computed(() => {
+    const size = 4 * Number(props.size) + "px";
+
+    return size;
+});
+</script>
+
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48">
+    <svg xmlns="http://www.w3.org/2000/svg" :style="{ width: logoSize, height: logoSize }" fill="none" viewBox="0 0 48 48">
         <path fill="#87c2fa" d="M24 18a6 6 0 1 1 0 12 6 6 0 0 1 0-12" />
         <path
             fill="#87c2fa"

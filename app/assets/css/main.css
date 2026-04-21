@@ -27,6 +27,10 @@ button {
     outline: none;
 }
 
+label {
+    @apply text-light-gray
+}
+
 @theme {
     --color-text: var(--text);
     --color-bg: var(--bg);

@@ -3,14 +3,6 @@ const props = defineProps<{
     size?: number | string;
     src?: string | undefined;
 }>();
-
-const normalizedSize = computed(() => {
-    const size = Number(props.size);
-
-    return Number.isFinite(size) && size > 0 ? size : 14;
-});
-
-const boxSize = computed(() => `calc(var(--spacing) * ${normalizedSize.value})`);
 </script>
 
 <template>
