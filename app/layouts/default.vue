@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { LogInIcon, LogOutIcon, PanelsTopLeftIcon } from "@lucide/vue";
+import { onClickOutside } from "@vueuse/core";
 import { padding } from "~/data/dynamicStyles";
 
+const dropDownRef = ref(null);
 const dropDown = ref(false);
 const authClient = useAuth();
 const session = authClient.useSession();
+
+onClickOutside(dropDownRef, () => {
+    dropDown.value = false;
+});
 
 async function signInWithGithub() {
     const callbackURL = `${window.location.origin}/dashboard`;
@@ -57,7 +63,8 @@ async function signOut() {
                     class="size-8 cursor-pointer"
                 />
                 <div
-                    class="absolute border border-border rounded-lg flex flex-col items-center gap-2.5 duration-400 transition-all bg-secondary origin-top-right w-56 right-0"
+                    ref="dropDownRef"
+                    class="absolute border border-border rounded-lg flex flex-col items-center gap-2.5 duration-300 transition-all bg-secondary origin-top-right w-56 right-0"
                     :class="[!session.data ? 'opacity-0' : 'opacity-100', padding, dropDown ? 'top-12 scale-100' : 'top-8 scale-0']"
                 >
                     <NuxtLink

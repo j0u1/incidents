@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 import { LogInIcon, LogOutIcon, ChevronDownIcon } from "@lucide/vue";
+import { onClickOutside } from "@vueuse/core";
 import { useAuth } from "~/composables/useAuthClient";
 import { padding } from "~/data/dynamicStyles";
 import { pages } from "~/data/pages";
 
 const route = useRoute();
 const isCollapsed = ref(false);
+const dropDownRef = ref(null);
 const dropDown = ref(false);
 const authClient = useAuth();
 const session = authClient.useSession();
@@ -36,6 +38,10 @@ async function signOut() {
 let clickCollapsed = () => {
     isCollapsed.value = !isCollapsed.value;
 };
+
+onClickOutside(dropDownRef, () => {
+    dropDown.value = false;
+});
 </script>
 
 <template>
@@ -74,6 +80,7 @@ let clickCollapsed = () => {
             </NuxtLink>
         </div>
         <div
+            ref="dropDownRef"
             @click="session.data ? (dropDown = !dropDown) : ''"
             class="absolute border border-border rounded-lg flex items-center gap-2.5 duration-200 transition-all cursor-pointer z-10 group"
             :class="[
