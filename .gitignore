@@ -25,6 +25,7 @@ logs
 .env.*
 !.env.example
 
+
 # backend
 # dependencies
 /node_modules
@@ -68,3 +69,6 @@ yarn-error.log*
 package-lock.json
 **/*.bun
 /src/generated/prisma
+
+# prisma
+/backend/src/generated
