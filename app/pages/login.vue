@@ -22,7 +22,7 @@ const password = ref("");
         <div class="rounded-xl outline outline-border p-6 flex flex-col gap-6 bg-bg">
             <form class="flex flex-col gap-4 w-full">
                 <div class="flex flex-col gap-2">
-                    <label>Логин <span class="text-gray text-sm">(почта или никнейм)</span></label>
+                    <label>Логин <span class="text-gray text-sm">(почта или имя)</span></label>
                     <div
                         class="relative outline outline-border rounded-lg flex items-center text-gray focus-within:text-primary duration-300 transition-all focus-within:outline-primary"
                     >
