@@ -71,7 +71,7 @@ async function signOut() {
                     <button
                         @click="signOut"
                         type="button"
-                        class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-300 cursor-pointer"
+                        class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-all cursor-pointer"
                         :class="padding"
                     >
                         <LogOutIcon class="size-4.5" />
