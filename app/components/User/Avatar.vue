@@ -15,7 +15,7 @@ const boxSize = computed(() => `calc(var(--spacing) * ${normalizedSize.value})`)
 
 <template>
     <NuxtImg
-        class="select-none bg-primary text-black font-medium text-xl flex items-center justify-center rounded-full shrink-0 duration-300 transition-all"
+        class="select-none bg-gray text-black font-medium text-xl flex items-center justify-center rounded-full shrink-0 duration-300 transition-all"
         :src="src"
     />
 </template>

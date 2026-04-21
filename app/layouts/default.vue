@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { LogInIcon, LogOutIcon, PanelsTopLeftIcon } from "@lucide/vue";
+import { LogInIcon, LogOutIcon } from "@lucide/vue";
 import { onClickOutside } from "@vueuse/core";
 import { padding } from "~/data/dynamicStyles";
+import { pages } from "~/data/pages";
 
 const dropDownRef = ref(null);
 const dropDown = ref(false);
@@ -37,7 +38,7 @@ async function signOut() {
 </script>
 
 <template>
-    <header class="flex items-center justify-between pt-6.75 px-4 max-h-16.75">
+    <header class="flex items-center justify-between pt-6.5 px-4 max-h-16.75">
         <NuxtLink class="duration-300 transition-all active:scale-105" to="/">
             <IconsLogosFull />
         </NuxtLink>
@@ -57,8 +58,8 @@ async function signOut() {
                     Войти
                 </button>
                 <UserAvatar
-                    @click="session.data && (dropDown = !dropDown)"
                     v-else
+                    @click="session.data && (dropDown = !dropDown)"
                     :src="session.data.user.image ?? undefined"
                     class="size-8 cursor-pointer"
                 />
@@ -68,13 +69,15 @@ async function signOut() {
                     :class="[!session.data ? 'opacity-0' : 'opacity-100', padding, dropDown ? 'top-12 scale-100' : 'top-8 scale-0']"
                 >
                     <NuxtLink
-                        href="/dashboard"
+                        v-for="page in pages"
+                        :href="page.path"
                         class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-primary hover:text-primary duratiom-300 transition-all cursor-pointer"
                         :class="padding"
                     >
-                        <PanelsTopLeftIcon class="size-4.5" />
-                        Обзор
+                        <component :is="page.icon" class="size-4.5" />
+                        {{ page.title }}
                     </NuxtLink>
+                    <hr class="border-border w-full" />
                     <button
                         @click="signOut"
                         type="button"
