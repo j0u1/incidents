@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "taskswap-frontend",
+      "name": "yadro-frontend",
       "dependencies": {
         "@lucide/vue": "^1.8.0",
         "@tailwindcss/vite": "^4.2.2",

@@ -4,9 +4,9 @@ definePageMeta({
     pageTitle: "Обзор",
 });
 
-const seoTitle = "Обзор // TaskSwap";
+const seoTitle = "Обзор // Ядро";
 const seoDescription =
-    "Внутренний дашборд TaskSwap для быстрого обзора проблем, задач в работе, последних инцидентов и статистики по категориям.";
+    "Внутренний дашборд Ядро для быстрого обзора проблем, задач в работе, последних инцидентов и статистики по категориям.";
 
 useSeoMeta({
     title: seoTitle,
@@ -14,13 +14,13 @@ useSeoMeta({
     ogTitle: seoTitle,
     ogDescription: seoDescription,
     ogType: "website",
-    ogSiteName: "TaskSwap",
+    ogSiteName: "Ядро",
     ogLocale: "ru_RU",
     twitterCard: "summary",
     twitterTitle: seoTitle,
     twitterDescription: seoDescription,
     robots: "noindex, nofollow, noarchive",
-    keywords: "TaskSwap, dashboard, обзор, проблемы, инциденты, решения, задачи, мониторинг",
+    keywords: "Ядро, dashboard, обзор, проблемы, инциденты, решения, задачи, мониторинг",
 });
 
 useHead({

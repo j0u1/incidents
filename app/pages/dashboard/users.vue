@@ -8,9 +8,9 @@ definePageMeta({
     pageTitle: "Участники",
 });
 
-const seoTitle = "Участники // TaskSwap";
+const seoTitle = "Участники // Ядро";
 const seoDescription =
-    "Раздел TaskSwap с участниками команды, ролями, зонами ответственности и текущей загрузкой для удобного распределения задач.";
+    "Раздел Ядро с участниками команды, ролями, зонами ответственности и текущей загрузкой для удобного распределения задач.";
 
 useSeoMeta({
     title: seoTitle,
@@ -18,14 +18,13 @@ useSeoMeta({
     ogTitle: seoTitle,
     ogDescription: seoDescription,
     ogType: "website",
-    ogSiteName: "TaskSwap",
+    ogSiteName: "Ядро",
     ogLocale: "ru_RU",
     twitterCard: "summary",
     twitterTitle: seoTitle,
     twitterDescription: seoDescription,
     robots: "noindex, nofollow, noarchive",
-    keywords:
-        "TaskSwap, участники, команда, сотрудники, пользователи, роли, ответственность, загрузка, dashboard, team",
+    keywords: "Ядро, участники, команда, сотрудники, пользователи, роли, ответственность, загрузка, dashboard, team",
 });
 
 useHead({

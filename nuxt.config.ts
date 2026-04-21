@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     },
     app: {
         head: {
-           title: "TaskSwap — Проблемы случаются, Вы решаете их быстрее"
+           title: "Ядро — Проблемы случаются, Вы решаете их быстрее"
         }
     }
 });

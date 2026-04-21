@@ -6,9 +6,8 @@ definePageMeta({
     pageTitle: "Проблемы",
 });
 
-const seoTitle = "Проблемы // TaskSwap";
-const seoDescription =
-    "Раздел TaskSwap с актуальными проблемами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
+const seoTitle = "Проблемы // Ядро";
+const seoDescription = "Раздел Ядро с актуальными проблемами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
 
 useSeoMeta({
     title: seoTitle,
@@ -16,13 +15,13 @@ useSeoMeta({
     ogTitle: seoTitle,
     ogDescription: seoDescription,
     ogType: "website",
-    ogSiteName: "TaskSwap",
+    ogSiteName: "Ядро",
     ogLocale: "ru_RU",
     twitterCard: "summary",
     twitterTitle: seoTitle,
     twitterDescription: seoDescription,
     robots: "noindex, nofollow, noarchive",
-    keywords: "TaskSwap, проблемы, инциденты, тикеты, статусы, приоритеты, решения, dashboard, support, task management",
+    keywords: "Ядро, проблемы, инциденты, тикеты, статусы, приоритеты, решения, dashboard, support, task management",
 });
 
 useHead({

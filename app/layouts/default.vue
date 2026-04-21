@@ -36,7 +36,7 @@ async function signOut() {
             <IconsLogosFull />
         </NuxtLink>
         <div class="flex items-center gap-4">
-            <NuxtLink to="//github.com/j0u1/taskswap-frontend" target="_blank">
+            <NuxtLink to="//github.com/j0u1/yadro-frontend" target="_blank">
                 <IconsGitHub class="fill-gray hover:fill-light-gray duration-300 transition-all hover:scale-105 active:105 size-6" />
             </NuxtLink>
             <div class="relative">
