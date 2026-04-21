@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 :root {
-    --text: #ffffff;
+    --text: #e9e9e9;
     --bg: #101012;
     --secondary: #202020;
     --border: #292929;
@@ -38,4 +38,8 @@ button {
     --color-red: var(--red);
     --color-green: var(--green);
     --color-orange: var(--orange);
+}
+
+#__nuxt {
+    @apply space-y-8
 }

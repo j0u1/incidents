@@ -22,5 +22,10 @@ export default defineNuxtConfig({
         public: {
           authBaseURL: "http://localhost:3000",
         }
+    },
+    app: {
+        head: {
+           title: "TaskSwap — Проблемы случаются, Вы решаете их быстрее"
+        }
     }
 });

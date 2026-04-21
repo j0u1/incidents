@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { LogInIcon, LogOutIcon, ChevronDownIcon } from "@lucide/vue";
-import { useAuthClient } from "~/composables/useAuthClient";
+import { useAuth } from "~/composables/useAuthClient";
 import { padding } from "~/data/dynamicStyles";
 import { pages } from "~/data/pages";
 
 const route = useRoute();
 const isCollapsed = ref(false);
 const dropDown = ref(false);
-const authClient = useAuthClient();
+const authClient = useAuth();
 const session = authClient.useSession();
 
 async function signInWithGithub() {
@@ -28,8 +28,9 @@ async function signInWithGithub() {
     }
 }
 
-function signOut() {
-    return authClient.signOut();
+async function signOut() {
+    await authClient.signOut();
+    window.location.href = `${window.location.origin}/`;
 }
 
 let clickCollapsed = () => {
@@ -91,7 +92,7 @@ let clickCollapsed = () => {
                 Войти
             </button>
 
-            <div v-else class="relative flex items-center gap-2.5 w-full">
+            <div v-else class="relative flex items-center gap-2.5 w-full select-none">
                 <UserAvatar :src="session.data.user.image ?? undefined" :class="isCollapsed ? 'size-6' : 'size-10'" />
                 <div v-if="!isCollapsed">
                     <p>{{ session.data.user.name }}</p>
@@ -104,8 +105,8 @@ let clickCollapsed = () => {
             </div>
         </div>
         <div
-            class="absolute left-4 right-4 border border-border rounded-lg flex flex-col items-center gap-2.5 duration-300 transition-all bg-secondary origin-bottom"
-            :class="[padding, dropDown ? 'bottom-24 scale-100' : 'bottom-4 scale-75']"
+            class="absolute left-4 right-4 border border-border rounded-lg flex flex-col items-center gap-2.5 duration-400 transition-all bg-secondary origin-bottom"
+            :class="[!session.data ? 'opacity-0' : 'opacity-100', padding, dropDown ? 'bottom-24 scale-100' : 'bottom-4 scale-0']"
         >
             <button
                 @click="signOut"
