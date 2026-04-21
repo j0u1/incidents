@@ -7,6 +7,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
     const session = await authClient.getSession()
 
     if (!session.data && !PUBLIC_ROUTES.includes(to.path)) {
-      return navigateTo("/")
+      return navigateTo("/dashboard")
     }
 })

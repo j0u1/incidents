@@ -50,18 +50,12 @@ async function signOut() {
                     <LogInIcon class="size-4.5" />
                     Войти
                 </button>
-                <div
-                    @click="session.data ? (dropDown = !dropDown) : ''"
+                <UserAvatar
+                    @click="session.data && (dropDown = !dropDown)"
                     v-else
-                    class="relative flex items-center gap-2.5 w-full select-none cursor-pointer"
-                >
-                    <div>
-                        <p>
-                            {{ session.data.user.name }}
-                        </p>
-                    </div>
-                    <UserAvatar :src="session.data.user.image ?? undefined" class="size-8" />
-                </div>
+                    :src="session.data.user.image ?? undefined"
+                    class="size-8 cursor-pointer"
+                />
                 <div
                     class="absolute border border-border rounded-lg flex flex-col items-center gap-2.5 duration-400 transition-all bg-secondary origin-top-right w-56 right-0"
                     :class="[!session.data ? 'opacity-0' : 'opacity-100', padding, dropDown ? 'top-12 scale-100' : 'top-8 scale-0']"
