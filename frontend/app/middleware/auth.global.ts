@@ -4,6 +4,8 @@ const PUBLIC_ROUTES = ["/", "/about"]
 const AUTH_ROUTES = ["/login", "/register"]
 
 export default defineNuxtRouteMiddleware(async (to) => {
+    if (import.meta.server) return
+
     const authClient = useAuth();
     const session = await authClient.getSession();
 

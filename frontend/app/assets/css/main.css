@@ -23,10 +23,6 @@ html {
     color: var(--text);
 }
 
-button {
-    outline: none;
-}
-
 label {
     @apply text-light-gray
 }

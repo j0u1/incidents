@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LayoutIcon } from "@lucide/vue";
+import { LayoutIcon, LogInIcon } from "@lucide/vue";
 import { padding } from "~/data/dynamicStyles";
 
 const authClient = useAuth();
@@ -30,15 +30,7 @@ async function signInWithGithub() {
             <span>Проблемы случаются,</span>
             <span class="text-primary">Вы решите их быстрее</span>
         </h1>
-        <button
-            v-if="!session.data?.session"
-            @click="signInWithGithub"
-            class="border border-border rounded-lg flex items-center gap-2.5 text-light-gray fill-light-gray duration-300 transition-all hover:border-primary hover:text-primary hover:fill-primary cursor-pointer"
-            :class="padding"
-        >
-            <IconsGitHub class="size-4.5" />
-            Войти через GitHub
-        </button>
+        <UIButton v-if="!session.data?.session" variant="login" long />
         <NuxtLink
             v-else
             class="border border-border rounded-lg flex items-center gap-2.5 text-light-gray duration-300 transition-all hover:border-primary hover:text-primary"
