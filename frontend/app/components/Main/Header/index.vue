@@ -56,8 +56,8 @@ async function signOut() {
                 />
                 <div
                     ref="dropDownRef"
-                    class="absolute border border-border rounded-lg flex flex-col items-center gap-2.5 duration-300 transition-all bg-secondary origin-top-right w-56 right-0"
-                    :class="[!session.data ? 'opacity-0' : 'opacity-100', padding, dropDown ? 'top-12 scale-100' : 'top-8 scale-0']"
+                    class="absolute border border-border rounded-xl flex flex-col items-center gap-2.5 duration-200 transition-all bg-secondary origin-top-right w-56 right-0 p-2.5"
+                    :class="[!session.data ? 'opacity-0' : 'opacity-100', dropDown ? 'top-12 scale-100' : 'top-8 scale-0']"
                 >
                     <NuxtLink
                         v-for="page in pages"
