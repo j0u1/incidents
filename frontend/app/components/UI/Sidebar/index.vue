@@ -49,7 +49,10 @@ onClickOutside(dropDownRef, () => {
         class="relative h-screen flex flex-col gap-4 duration-300 transition-all border-r border-border"
         :class="[isCollapsed ? 'w-19.75' : 'w-3/14 min-w-56']"
     >
-        <div @click="clickCollapsed" class="absolute -right-1 h-full w-2 cursor-col-resize" />
+        <div
+            @click="clickCollapsed"
+            class="absolute -right-1 h-full w-2 cursor-col-resize"
+        />
         <UISidebarHead :isCollapsed="isCollapsed" @toggle="clickCollapsed" />
         <hr class="h-0.5 w-full border-border" />
         <div class="space-y-3.5 px-3" :class="[isCollapsed && 'w-fit']">
@@ -69,11 +72,18 @@ onClickOutside(dropDownRef, () => {
                 <component
                     :is="page.icon"
                     class="shrink-0 duration-300 transition-all"
-                    :class="[isCollapsed ? 'size-5 mx-auto my-2' : 'size-4.5', route.path === page.path && 'delay-100']"
+                    :class="[
+                        isCollapsed ? 'size-5 mx-auto my-2' : 'size-4.5',
+                        route.path === page.path && 'delay-100',
+                    ]"
                 />
                 <span
                     class="duration-200 transition-all origin-left"
-                    :class="[isCollapsed ? 'scale-0 absolute opacity-0' : 'relative scale-100']"
+                    :class="[
+                        isCollapsed
+                            ? 'scale-0 absolute opacity-0'
+                            : 'relative scale-100',
+                    ]"
                 >
                     {{ page.title }}
                 </span>
@@ -85,7 +95,9 @@ onClickOutside(dropDownRef, () => {
             class="absolute border border-border rounded-lg flex items-center gap-2.5 duration-200 transition-all cursor-pointer z-10 group"
             :class="[
                 padding,
-                isCollapsed ? 'bottom-4 left-1/2 -translate-x-1/2 size-12.5' : 'bottom-4 left-4 right-4',
+                isCollapsed
+                    ? 'bottom-4 left-1/2 -translate-x-1/2 size-12.5'
+                    : 'bottom-4 left-4 right-4',
                 dropDown ? 'bg-secondary' : 'bg-bg',
             ]"
         >
@@ -99,11 +111,19 @@ onClickOutside(dropDownRef, () => {
                 Войти
             </button>
 
-            <div v-else class="relative flex items-center gap-2.5 w-full select-none">
-                <UserAvatar :src="session.data.user.image ?? undefined" :class="isCollapsed ? 'size-6' : 'size-10'" />
+            <div
+                v-else
+                class="relative flex items-center gap-2.5 w-full select-none"
+            >
+                <UserAvatar
+                    :src="session.data.user.image ?? undefined"
+                    :class="isCollapsed ? 'size-6' : 'size-10'"
+                />
                 <div v-if="!isCollapsed">
                     <p>{{ session.data.user.name }}</p>
-                    <p class="text-sm text-light-gray">{{ session.data.user.email }}</p>
+                    <p class="text-sm text-light-gray">
+                        {{ session.data.user.email }}
+                    </p>
                 </div>
                 <ChevronDownIcon
                     class="absolute right-0 size-4.5 text-gray shrink-0 duration-300 transition-all"
@@ -112,8 +132,12 @@ onClickOutside(dropDownRef, () => {
             </div>
         </div>
         <div
-            class="absolute left-4 right-4 border border-border rounded-lg flex flex-col items-center gap-2.5 duration-400 transition-all bg-secondary origin-bottom"
-            :class="[!session.data ? 'opacity-0' : 'opacity-100', padding, dropDown ? 'bottom-24 scale-100' : 'bottom-4 scale-0']"
+            class="absolute left-4 right-4 border border-border rounded-lg flex flex-col items-center gap-2.5 duration-200 transition-all bg-secondary origin-bottom"
+            :class="[
+                !session.data ? 'opacity-0' : 'opacity-100',
+                padding,
+                dropDown ? 'bottom-24 scale-100' : 'bottom-4 scale-0',
+            ]"
         >
             <button
                 @click="signOut"
