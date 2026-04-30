@@ -76,18 +76,28 @@ const inputs = [
     {
         label: "Почта",
         type: "email",
+<<<<<<< Updated upstream
         name: "email",
         placeholder: "Введите ваш email",
         icon: MailIcon,
         required: true,
+=======
+        placeholder: "Введите ваш email",
+        icon: MailIcon,
+>>>>>>> Stashed changes
     },
     {
         label: "Пароль",
         type: "password",
+<<<<<<< Updated upstream
         name: "password",
         placeholder: "Введите ваш пароль",
         icon: LockIcon,
         required: true,
+=======
+        placeholder: "Введите ваш пароль",
+        icon: LockIcon,
+>>>>>>> Stashed changes
     },
 ];
 </script>
