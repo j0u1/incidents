@@ -7,6 +7,7 @@ defineProps<{
     additionalText: String;
     placeholder: String;
     icon?: LucideIcon;
+    type: String;
 }>();
 </script>
 
@@ -23,7 +24,7 @@ defineProps<{
             <input
                 class="pl-12 w-full bg-transparent outline-none text-light-gray"
                 :class="padding"
-                type="email"
+                :type="type"
                 :placeholder="placeholder"
             />
         </div>
