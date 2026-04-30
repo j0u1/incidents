@@ -9,31 +9,26 @@ definePageMeta({
     layout: "auth",
 });
 
-const error = ref("");
-const email = ref("");
-const password = ref("");
-
-const route = useRoute();
-const isCollapsed = ref(false);
+const authError = ref("");
 const dropDownRef = ref(null);
-const dropDown = ref(false);
+
 const authClient = useAuth();
 const session = authClient.useSession();
 
 async function signIn() {
     const { data, error: signInError } = await authClient.signIn.email({
-        email: email.value,
-        password: password.value,
+        email: form.email,
+        password: form.password,
         callbackURL: "/",
     });
 
     if (signInError) {
         if (signInError.code === "INVALID_EMAIL_OR_PASSWORD") {
-            error.value = "Неверный логин или пароль";
+            authError.value = "Неверный логин или пароль";
         } else if (signInError.message === "Invalid email") {
-            error.value = "Неправильный вид почты";
+            authError.value = "Неправильный вид почты";
         } else {
-            error.value = "Ошибка входа: " + signInError.message;
+            authError.value = "Ошибка входа: " + signInError.message;
         }
         return;
     }
@@ -43,6 +38,7 @@ async function signIn() {
 
 async function signInWithGithub() {
     const callbackURL = `${window.location.origin}/dashboard`;
+
     const { data, error } = await authClient.signIn.social({
         provider: "github",
         callbackURL,
@@ -72,14 +68,26 @@ onClickOutside(dropDownRef, () => {
     dropDown.value = false;
 });
 
+type Form = {
+    email: string;
+    password: string;
+};
+
+const form = reactive<Form>({
+    email: "",
+    password: "",
+});
+
 const inputs = [
     {
+        key: "email",
         label: "Почта",
         type: "email",
         placeholder: "Введите ваш email",
         icon: MailIcon,
     },
     {
+        key: "password",
         label: "Пароль",
         type: "password",
         placeholder: "Введите ваш пароль",
@@ -103,8 +111,8 @@ const inputs = [
             <form @submit.prevent="signIn" class="flex flex-col gap-4 w-full">
                 <UIInput
                     v-for="input in inputs"
-                    :key="input.name"
-                    v-model="input.value"
+                    :key="input.key"
+                    v-model="form[input.key]"
                     :label="input.label"
                     :type="input.type"
                     :icon="input.icon"
@@ -148,12 +156,12 @@ const inputs = [
             <p
                 class="absolute -bottom-6 inset-x-0 text-sm duration-300 origin-top transition-all"
                 :class="[
-                    error
+                    authError
                         ? 'text-red-500 scale-100'
                         : 'text-light-gray scale-0',
                 ]"
             >
-                {{ error }}
+                {{ authError }}
             </p>
         </div>
     </section>

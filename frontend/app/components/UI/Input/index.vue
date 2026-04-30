@@ -3,11 +3,16 @@ import { padding } from "~/data/dynamicStyles";
 import type { LucideIcon } from "@lucide/vue";
 
 defineProps<{
-    label: String;
-    additionalText: String;
-    placeholder: String;
+    label: string;
+    additionalText?: string;
+    placeholder: string;
     icon?: LucideIcon;
-    type: String;
+    type: string;
+    modelValue: string | undefined;
+}>();
+
+const emit = defineEmits<{
+    (e: "update:modelValue", value: string): void;
 }>();
 </script>
 
@@ -26,6 +31,13 @@ defineProps<{
                 :class="padding"
                 :type="type"
                 :placeholder="placeholder"
+                :value="modelValue"
+                @input="
+                    emit(
+                        'update:modelValue',
+                        ($event.target as HTMLInputElement).value,
+                    )
+                "
             />
         </div>
     </div>
