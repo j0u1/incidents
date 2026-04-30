@@ -25,7 +25,9 @@ async function signInWithGithub() {
 </script>
 
 <template>
-    <main class="flex flex-col gap-16 items-center max-h-[90.2dvh] overflow-hidden border-b border-border">
+    <main
+        class="flex flex-col gap-16 items-center max-h-[90.2dvh] overflow-hidden border-b border-border"
+    >
         <h1 class="text-6xl font-medium flex flex-col gap-2 text-center pt-10">
             <span>Проблемы случаются,</span>
             <span class="text-primary">Вы решите их быстрее</span>
@@ -40,7 +42,10 @@ async function signInWithGithub() {
             <LayoutIcon class="size-4.5" />
             Перейти в Обзор
         </NuxtLink>
-        <NuxtImg class="max-w-11/12 mx-auto rounded-2xl outline outline-border w-full" src="/images/dashboard_page.webp" />
+        <NuxtImg
+            class="max-w-11/12 mx-auto rounded-2xl outline outline-border w-full"
+            src="/images/preview.webp"
+        />
     </main>
     <section class="flex flex-col px-20"></section>
 </template>
