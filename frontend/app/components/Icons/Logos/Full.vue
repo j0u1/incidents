@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Mini from "./Mini.vue";
 
-const projectName = "Ядро";
+const projectName = "Казус";
 
 const props = withDefaults(
     defineProps<{
