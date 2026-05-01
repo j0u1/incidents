@@ -64,7 +64,7 @@ onClickOutside(dropDownRef, () => {
                 :class="[
                     route.path === page.path
                         ? 'border-transparent bg-secondary text-light-gray cursor-default'
-                        : 'border-secondary hover:border-primary hover:text-primary',
+                        : 'border-border hover:border-primary hover:text-primary',
                     isCollapsed ? 'size-12.75' : '',
                     padding,
                 ]"
