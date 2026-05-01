@@ -9,6 +9,6 @@ export const pages = [
     path: `${pagesDashboardPath}/problems`,
     icon: TriangleAlert,
   },
-  { title: "Участники", path: `${pagesDashboardPath}/users`, icon: Users2 },
+  // { title: "Участники", path: `${pagesDashboardPath}/users`, icon: Users2 },
   { title: "Аккаунт", path: "/account", icon: User2 },
 ];
