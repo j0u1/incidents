@@ -45,7 +45,7 @@ async function signOut() {
             <div class="relative">
                 <UIButton v-if="!session.data" variant="login" />
                 <template v-else>
-                    <UserAvatar
+                    <UIAvatar
                         @click="isMenuOpen = !isMenuOpen"
                         :src="session.data.user.image ?? undefined"
                         class="size-8 cursor-pointer"

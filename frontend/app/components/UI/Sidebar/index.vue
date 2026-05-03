@@ -84,7 +84,7 @@ onClickOutside(dropDownRef, () => {
                 v-else
                 class="relative flex items-center gap-2.5 w-full select-none"
             >
-                <UserAvatar
+                <UIAvatar
                     :src="session.data.user.image ?? undefined"
                     :class="isCollapsed ? 'size-6' : 'size-10'"
                 />
