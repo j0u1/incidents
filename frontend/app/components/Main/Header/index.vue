@@ -1,17 +1,11 @@
 <script setup lang="ts">
 import { LogOutIcon } from "@lucide/vue";
-import { onClickOutside } from "@vueuse/core";
 import { padding } from "~/data/dynamicStyles";
-import { pages } from "~/data/pages";
+import { visibleNavigation } from "~/config/navigation";
 
-const dropDownRef = ref(null);
-const dropDown = ref(false);
 const authClient = useAuth();
 const session = authClient.useSession();
-
-onClickOutside(dropDownRef, () => {
-    dropDown.value = false;
-});
+const isMenuOpen = ref(false);
 
 async function signInWithGithub() {
     const callbackURL = `${window.location.origin}/dashboard`;
@@ -38,47 +32,26 @@ async function signOut() {
 </script>
 
 <template>
-    <header class="flex items-center justify-between pt-6.5 px-4 max-h-16.75">
+    <header class="flex items-center justify-between pt-6.5 px-4">
         <NuxtLink class="duration-300 transition-all active:scale-105" to="/">
             <IconsLogosFull />
         </NuxtLink>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4 min-h-11">
             <NuxtLink to="//github.com/j0u1/yadro-frontend" target="_blank">
-                <IconsGitHub class="fill-gray hover:fill-light-gray duration-300 transition-all hover:scale-105 active:105 size-6" />
+                <IconsGitHub
+                    class="fill-gray hover:fill-light-gray duration-300 transition-all hover:scale-105 active:105 size-6"
+                />
             </NuxtLink>
             <div class="relative">
                 <UIButton v-if="!session.data" variant="login" />
-                <UserAvatar
-                    v-else
-                    @click="session.data && (dropDown = !dropDown)"
-                    :src="session.data.user.image ?? undefined"
-                    class="size-8 cursor-pointer"
-                />
-                <div
-                    ref="dropDownRef"
-                    class="absolute border border-border rounded-xl flex flex-col items-center gap-2.5 duration-200 transition-all bg-secondary origin-top-right w-56 right-0 p-2.5"
-                    :class="[!session.data ? 'opacity-0' : 'opacity-100', dropDown ? 'top-12 scale-100' : 'top-8 scale-0']"
-                >
-                    <NuxtLink
-                        v-for="page in pages"
-                        :href="page.path"
-                        class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-primary hover:text-primary duratiom-300 transition-all cursor-pointer"
-                        :class="padding"
-                    >
-                        <component :is="page.icon" class="size-4.5" />
-                        {{ page.title }}
-                    </NuxtLink>
-                    <hr class="border-border w-full" />
-                    <button
-                        @click="signOut"
-                        type="button"
-                        class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-all cursor-pointer"
-                        :class="padding"
-                    >
-                        <LogOutIcon class="size-4.5" />
-                        Выйти
-                    </button>
-                </div>
+                <template v-else>
+                    <UserAvatar
+                        @click="isMenuOpen = !isMenuOpen"
+                        :src="session.data.user.image ?? undefined"
+                        class="size-8 cursor-pointer"
+                    />
+                    <UIDropDown v-model="isMenuOpen" :session="session" />
+                </template>
             </div>
         </div>
     </header>

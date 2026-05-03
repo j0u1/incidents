@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import { LogInIcon } from "@lucide/vue";
+import { LogInIcon, LogOutIcon } from "@lucide/vue";
 import { padding } from "~/data/dynamicStyles";
+const { signOut } = useAuth();
 
-const props = withDefaults(
+withDefaults(
     defineProps<{
-        variant?: "login" | "filled";
+        variant?: "login" | "filled" | "logout";
         long?: boolean;
+        position?: "left" | "right" | "center";
     }>(),
     {
         long: false,
+        position: "center",
     },
 );
 </script>
 
 <template>
-    <!-- Кнопка логина -->
+    <!-- Логин -->
     <NuxtLink
         v-if="variant === 'login'"
         href="/login"
@@ -25,7 +28,7 @@ const props = withDefaults(
         {{ long ? "Войти в аккаунт" : "Войти" }}
     </NuxtLink>
 
-    <!-- Заполненная кнопка -->
+    <!-- Заполненный логин -->
     <button
         v-else-if="variant === 'filled'"
         type="submit"
@@ -36,7 +39,19 @@ const props = withDefaults(
         <slot />
     </button>
 
-    <!-- Обычная, полая кнопка -->
+    <!-- Выход -->
+    <button
+        v-else-if="variant === 'logout'"
+        @click="signOut"
+        type="button"
+        class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duration-300 transition-all cursor-pointer"
+        :class="padding"
+    >
+        <LogOutIcon class="size-4.5" />
+        Выйти
+    </button>
+
+    <!-- Полая  -->
     <button
         v-else
         class="border border-border rounded-lg flex items-center gap-2.5 text-light-gray fill-light-gray duration-300 transition-all hover:border-primary hover:text-primary hover:fill-primary cursor-pointer select-none bg-bg justify-center"

@@ -3,7 +3,7 @@ import { LogInIcon, LogOutIcon, ChevronDownIcon } from "@lucide/vue";
 import { onClickOutside } from "@vueuse/core";
 import { useAuth } from "~/composables/useAuthClient";
 import { padding } from "~/data/dynamicStyles";
-import { pages } from "~/data/pages";
+import { visibleNavigation } from "~/config/navigation";
 
 const route = useRoute();
 const isCollapsed = ref(false);
@@ -55,39 +55,8 @@ onClickOutside(dropDownRef, () => {
         />
         <UISidebarHead :isCollapsed="isCollapsed" @toggle="clickCollapsed" />
         <hr class="h-0.5 w-full border-border" />
-        <div class="space-y-3.5 px-3" :class="[isCollapsed && 'w-fit']">
-            <NuxtLink
-                v-for="page in pages"
-                :key="page.title"
-                :to="page.path"
-                class="flex items-center gap-2 text-gray rounded-lg font-medium duration-200 transition-all whitespace-nowrap relative border"
-                :class="[
-                    route.path === page.path
-                        ? 'border-transparent bg-secondary text-light-gray cursor-default'
-                        : 'border-border hover:border-primary hover:text-primary',
-                    isCollapsed ? 'size-12.75' : '',
-                    padding,
-                ]"
-            >
-                <component
-                    :is="page.icon"
-                    class="shrink-0 duration-300 transition-all"
-                    :class="[
-                        isCollapsed ? 'size-5 mx-auto my-2' : 'size-4.5',
-                        route.path === page.path && 'delay-100',
-                    ]"
-                />
-                <span
-                    class="duration-200 transition-all origin-left"
-                    :class="[
-                        isCollapsed
-                            ? 'scale-0 absolute opacity-0'
-                            : 'relative scale-100',
-                    ]"
-                >
-                    {{ page.title }}
-                </span>
-            </NuxtLink>
+         <div class="space-y-3.5 px-3" :class="[isCollapsed && 'w-fit']">
+             <UIPages :muted="true" />
         </div>
         <div
             ref="dropDownRef"

@@ -33,15 +33,9 @@ async function signInWithGithub() {
             <span class="text-primary">Вы решите их быстрее</span>
         </h1>
         <UIButton v-if="!session.data?.session" variant="login" long />
-        <NuxtLink
-            v-else
-            class="border border-border rounded-lg flex items-center gap-2.5 text-light-gray duration-300 transition-all hover:border-primary hover:text-primary"
-            :class="padding"
-            href="/dashboard"
-        >
-            <LayoutIcon class="size-4.5" />
+        <UIButtonBase as="a" href="/dashboard" v-else variant="outline" :icon="LayoutIcon" >
             Перейти в Обзор
-        </NuxtLink>
+        </UIButtonBase>
         <NuxtImg
             class="max-w-11/12 mx-auto rounded-2xl outline outline-border w-full"
             src="/images/preview.webp"
