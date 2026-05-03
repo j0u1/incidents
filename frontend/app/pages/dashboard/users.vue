@@ -2,13 +2,14 @@
 import { PlusIcon } from "@lucide/vue";
 import { padding } from "~/data/dynamicStyles";
 import { userStats } from "~/data/user";
+import { projectName } from "~/data/project";
 
 definePageMeta({
     layout: "sidebar",
     pageTitle: "Участники",
 });
 
-const seoTitle = "Участники // Казус";
+const seoTitle = "Участники // " + projectName;
 const seoDescription =
     "Раздел Казус с участниками команды, ролями, зонами ответственности и текущей загрузкой для удобного распределения задач.";
 
@@ -18,14 +19,14 @@ useSeoMeta({
     ogTitle: seoTitle,
     ogDescription: seoDescription,
     ogType: "website",
-    ogSiteName: "Казус",
+    ogSiteName: projectName,
     ogLocale: "ru_RU",
     twitterCard: "summary",
     twitterTitle: seoTitle,
     twitterDescription: seoDescription,
     robots: "noindex, nofollow, noarchive",
     keywords:
-        "Казус, участники, команда, сотрудники, пользователи, роли, ответственность, загрузка, dashboard, team",
+        projectName + ", участники, команда, сотрудники, пользователи, роли, ответственность, загрузка, dashboard, team",
 });
 
 useHead({

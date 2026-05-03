@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import { PlusIcon } from "@lucide/vue";
+import { projectName } from "~/data/project.ts";
 
 definePageMeta({
     layout: "sidebar",
     pageTitle: "Проблемы",
 });
 
-const seoTitle = "Проблемы // Казус";
+const seoTitle = "Проблемы // " + projectName;
 const seoDescription =
-    "Раздел Казус с актуальными проблемами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
+    "Раздел " + projectName + " с актуальными проблемами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
 
 useSeoMeta({
     title: seoTitle,
@@ -16,14 +17,14 @@ useSeoMeta({
     ogTitle: seoTitle,
     ogDescription: seoDescription,
     ogType: "website",
-    ogSiteName: "Казус",
+    ogSiteName: projectName,
     ogLocale: "ru_RU",
     twitterCard: "summary",
     twitterTitle: seoTitle,
     twitterDescription: seoDescription,
     robots: "noindex, nofollow, noarchive",
     keywords:
-        "Казус, проблемы, инциденты, тикеты, статусы, приоритеты, решения, dashboard, support, task management",
+        projectName + ", проблемы, инциденты, тикеты, статусы, приоритеты, решения, dashboard, support, task management",
 });
 
 useHead({

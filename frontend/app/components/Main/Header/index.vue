@@ -32,7 +32,7 @@ async function signOut() {
 </script>
 
 <template>
-    <header class="flex items-center justify-between pt-6.5 px-4">
+    <header class="flex items-center justify-between pt-5 px-6">
         <NuxtLink class="duration-300 transition-all active:scale-105" to="/">
             <IconsLogosFull />
         </NuxtLink>
