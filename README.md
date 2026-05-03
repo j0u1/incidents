@@ -1,4 +1,4 @@
-## Казус
+## Хелп Деск
 [![wakatime](https://wakatime.com/badge/user/42e0f82b-2688-4a48-85af-5eedd1812f70/project/f3aeb456-3b6e-42a5-8d2e-3be1ba379ffd.svg?style=flat)](https://wakatime.com/badge/user/42e0f82b-2688-4a48-85af-5eedd1812f70/project/f3aeb456-3b6e-42a5-8d2e-3be1ba379ffd)
 
 Система управления инцидентами с маршрутизацией обращений. Позволяет регистрировать и отслеживать проблемы. На данный момент поддерживается один пользователь.
