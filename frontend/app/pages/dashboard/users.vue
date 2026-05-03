@@ -11,7 +11,9 @@ definePageMeta({
 
 const seoTitle = "Участники // " + projectName;
 const seoDescription =
-    "Раздел Казус с участниками команды, ролями, зонами ответственности и текущей загрузкой для удобного распределения задач.";
+    "Раздел " +
+    projectName +
+    " с участниками команды, ролями, зонами ответственности и текущей загрузкой для удобного распределения задач.";
 
 useSeoMeta({
     title: seoTitle,
@@ -26,7 +28,8 @@ useSeoMeta({
     twitterDescription: seoDescription,
     robots: "noindex, nofollow, noarchive",
     keywords:
-        projectName + ", участники, команда, сотрудники, пользователи, роли, ответственность, загрузка, dashboard, team",
+        projectName +
+        ", участники, команда, сотрудники, пользователи, роли, ответственность, загрузка, dashboard, team",
 });
 
 useHead({
