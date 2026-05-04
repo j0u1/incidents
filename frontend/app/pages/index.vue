@@ -32,7 +32,16 @@ async function signInWithGithub() {
             <span>Проблемы случаются,</span>
             <span class="text-primary">Вы решите их быстрее</span>
         </h1>
-        <UIButton v-if="!session.data?.session" variant="login" long />
+        <!-- <UIButton v-if="!session.data?.session" variant="login" long /> -->
+        <UIButtonBase
+            v-if="!session.data?.session"
+            as="a"
+            href="/login"
+            variant="filled"
+            :icon="LogInIcon"
+        >
+            Войти в систему
+        </UIButtonBase>
         <UIButtonBase
             v-else
             as="a"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LogOutIcon } from "@lucide/vue";
+import { LogOutIcon, LogInIcon } from "@lucide/vue";
 import { padding } from "~/data/dynamicStyles";
 import { visibleNavigation } from "~/config/navigation";
 
@@ -43,7 +43,15 @@ async function signOut() {
                 />
             </NuxtLink>
             <div class="relative">
-                <UIButton v-if="!session.data" variant="login" />
+                <UIButtonBase
+                    v-if="!session.data?.session"
+                    as="a"
+                    href="/login"
+                    variant="filled"
+                    :icon="LogInIcon"
+                >
+                    Войти
+                </UIButtonBase>
                 <template v-else>
                     <UIAvatar
                         @click="isMenuOpen = !isMenuOpen"
