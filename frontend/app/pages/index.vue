@@ -33,7 +33,13 @@ async function signInWithGithub() {
             <span class="text-primary">Вы решите их быстрее</span>
         </h1>
         <UIButton v-if="!session.data?.session" variant="login" long />
-        <UIButtonBase as="a" href="/dashboard" v-else variant="outline" :icon="LayoutIcon" >
+        <UIButtonBase
+            v-else
+            as="a"
+            href="/dashboard"
+            variant="filled"
+            :icon="LayoutIcon"
+        >
             Перейти в Обзор
         </UIButtonBase>
         <NuxtImg
