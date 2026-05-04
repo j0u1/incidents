@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { padding } from "~/data/dynamicStyles";
-import { MailIcon, LockIcon, ArrowRightIcon, LogInIcon, TypeIcon } from "@lucide/vue";
+import {
+    MailIcon,
+    LockIcon,
+    ArrowRightIcon,
+    LogInIcon,
+    TypeIcon,
+} from "@lucide/vue";
 
 definePageMeta({
     layout: "auth",
@@ -33,10 +39,13 @@ async function signUp() {
     if (signUpError) {
         if (signUpError.message === "Password too short") {
             error.value = "Пароль слишком короткий";
-        } else if (signUpError.message === "[body.email] Invalid email address") {
+        } else if (
+            signUpError.message === "[body.email] Invalid email address"
+        ) {
             error.value = "Не правильный вид почты";
         } else if (
-            signUpError.message === "[body.email] Invalid email address; [body.password] Too small: expected string to have >=1 characters"
+            signUpError.message ===
+            "[body.email] Invalid email address; [body.password] Too small: expected string to have >=1 characters"
         ) {
             error.value = "Не оставляйте поля с почтой или паролем пустыми";
         } else error.value = "Ошибка регистрации: " + signUpError.message;
@@ -56,14 +65,24 @@ async function signUp() {
             <ArrowRightIcon class="size-4.5 text-gray" />
             <p class="text-light-gray">Регистрация аккаунта</p>
         </div>
-        <div class="rounded-xl outline outline-border p-6 flex flex-col gap-6 bg-bg">
-            <form @submit.prevent="signUp" class="flex flex-col gap-4 w-full h-fit">
+        <div
+            class="rounded-xl outline outline-border p-6 flex flex-col gap-6 bg-bg"
+        >
+            <form
+                @submit.prevent="$emit('submit')"
+                class="flex flex-col gap-4 w-full h-fit"
+            >
                 <div class="flex flex-col gap-2">
-                    <label>Имя <span class="text-gray text-sm">(логин)</span></label>
+                    <label
+                        >Имя
+                        <span class="text-gray text-sm">(логин)</span></label
+                    >
                     <div
                         class="relative outline outline-border rounded-lg flex items-center text-gray focus-within:text-primary duration-300 transition-all focus-within:outline-primary"
                     >
-                        <TypeIcon class="absolute left-4 size-4.5 pointer-events-none" />
+                        <TypeIcon
+                            class="absolute left-4 size-4.5 pointer-events-none"
+                        />
                         <input
                             v-model="name"
                             class="pl-12 w-full bg-transparent outline-none text-light-gray"
@@ -78,7 +97,9 @@ async function signUp() {
                     <div
                         class="relative outline outline-border rounded-lg flex items-center text-gray focus-within:text-primary duration-300 transition-all focus-within:outline-primary"
                     >
-                        <MailIcon class="absolute left-4 size-4.5 pointer-events-none" />
+                        <MailIcon
+                            class="absolute left-4 size-4.5 pointer-events-none"
+                        />
                         <input
                             v-model="email"
                             class="pl-12 w-full bg-transparent outline-none text-light-gray"
@@ -96,13 +117,19 @@ async function signUp() {
                             @click="showPassword = !showPassword"
                             class="flex items-center gap-1.5 text-gray text-sm hover:text-primary duration-300 transition-all cursor-pointer"
                         >
-                            {{ !showPassword ? "Показать пароли" : "Скрыть пароли" }}
+                            {{
+                                !showPassword
+                                    ? "Показать пароли"
+                                    : "Скрыть пароли"
+                            }}
                         </div>
                     </div>
                     <div
                         class="relative outline outline-border rounded-lg flex items-center text-gray focus-within:text-primary duration-300 transition-all focus-within:outline-primary"
                     >
-                        <LockIcon class="absolute left-4 size-4.5 pointer-events-none" />
+                        <LockIcon
+                            class="absolute left-4 size-4.5 pointer-events-none"
+                        />
                         <input
                             v-model="password"
                             class="pl-12 w-full bg-transparent outline-none text-light-gray"
@@ -117,7 +144,9 @@ async function signUp() {
                     <div
                         class="relative outline outline-border rounded-lg flex items-center text-gray focus-within:text-primary duration-300 transition-all focus-within:outline-primary"
                     >
-                        <LockIcon class="absolute left-4 size-4.5 pointer-events-none" />
+                        <LockIcon
+                            class="absolute left-4 size-4.5 pointer-events-none"
+                        />
                         <input
                             v-model="retryPassword"
                             class="pl-12 w-full bg-transparent outline-none text-light-gray"
@@ -128,16 +157,29 @@ async function signUp() {
                     </div>
                 </div>
                 <hr class="border-border w-full" />
-                <UIButton type="submit" variant="filled">Зарегистрироваться</UIButton>
+                <UIButton type="submit" variant="filled"
+                    >Зарегистрироваться</UIButton
+                >
             </form>
         </div>
         <div class="relative text-center">
-            <NuxtLink class="text-sm text-gray duration-300 transition-all mx-auto group/reg" to="/login">
-                Уже есть аккаунт? <span class="text-light-gray group-hover/reg:text-primary duration-300 transition-all">Войти</span>
+            <NuxtLink
+                class="text-sm text-gray duration-300 transition-all mx-auto group/reg"
+                to="/login"
+            >
+                Уже есть аккаунт?
+                <span
+                    class="text-light-gray group-hover/reg:text-primary duration-300 transition-all"
+                    >Войти</span
+                >
             </NuxtLink>
             <p
                 class="absolute top-6 inset-x-0 text-sm duration-300 origin-top transition-all"
-                :class="[error ? 'text-red-500 scale-100' : 'text-light-gray scale-0']"
+                :class="[
+                    error
+                        ? 'text-red-500 scale-100'
+                        : 'text-light-gray scale-0',
+                ]"
             >
                 {{ error }}
             </p>
