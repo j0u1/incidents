@@ -19,7 +19,7 @@ const logoSize = computed(() => {
 </script>
 
 <template>
-    <div class="flex items-center gap-2 font-medium text-lg">
+    <div class="flex items-center gap-2 text-lg">
         <Mini :style="{ width: logoSize, height: logoSize }" />
         <span class="mt-0.5">{{ projectName }}</span>
         <span class="sr-only">{{ projectName }}</span>
