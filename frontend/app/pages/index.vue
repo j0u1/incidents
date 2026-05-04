@@ -26,9 +26,9 @@ async function signInWithGithub() {
 
 <template>
     <main
-        class="flex flex-col gap-16 items-center max-h-[90.2dvh] overflow-hidden border-b border-border"
+        class="flex flex-col gap-16 items-center max-h-[87.5dvh] overflow-hidden border-b border-border"
     >
-        <h1 class="text-6xl font-medium flex flex-col gap-2 text-center pt-10">
+        <h1 class="text-6xl font-medium flex flex-col gap-2 text-center pt-18">
             <span>Проблемы случаются,</span>
             <span class="text-primary">Вы решите их быстрее</span>
         </h1>
@@ -47,5 +47,5 @@ async function signInWithGithub() {
             src="/images/preview.webp"
         />
     </main>
-    <section class="flex flex-col px-20"></section>
+    <!-- <section class="flex flex-col px-20"></section> -->
 </template>
