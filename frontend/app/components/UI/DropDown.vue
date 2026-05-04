@@ -9,8 +9,8 @@ onClickOutside(dropDownRef, () => {
 });
 
 const props = defineProps<{
-    session: { data: any }
-}>()
+    session: { data: any };
+}>();
 </script>
 
 <template>
@@ -19,7 +19,7 @@ const props = defineProps<{
         class="absolute border border-border rounded-xl flex flex-col items-center gap-2.5 duration-200 transition-all bg-secondary origin-top-right w-56 right-0 p-2.5"
         :class="[
             props.session.data ? 'opacity-100' : 'opacity-0',
-            isOpen ? 'top-12 scale-100 opacity-100' : 'top-8 scale-0 opacity-0'
+            isOpen ? 'top-12 scale-100 opacity-100' : 'top-8 scale-0 opacity-0',
         ]"
     >
         <UIPages dropDown />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LucideIcon } from "lucide-vue-next";
+import { LucideIcon } from "lucide/vue";
 
 interface Inputs {
     key: string;
