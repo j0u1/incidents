@@ -6,7 +6,7 @@ import { LogOutIcon } from "@lucide/vue";
 const { signOut } = useAuth();
 const props = withDefaults(
     defineProps<{
-        dropDown: boolean;
+        dropDown?: boolean;
         muted?: boolean;
     }>(),
     {
