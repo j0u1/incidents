@@ -1,26 +1,15 @@
 {
   "languages": {
     "TypeScript": {
-      "language_servers": [
-        "vtsls",
-        "biome",
-        "!typescript-language-server",
-        "!oxc",
-      ],
+      "language_servers": ["vtsls", "!typescript-language-server", "!oxc"],
     },
     "JavaScript": {
-      "language_servers": [
-        "vtsls",
-        "biome",
-        "!typescript-language-server",
-        "!oxc",
-      ],
+      "language_servers": ["vtsls", "!typescript-language-server", "!oxc"],
     },
     "Vue.js": {
       "language_servers": [
         "vue-language-server",
         "vtsls",
-        "biome",
         "tailwindcss-language-server",
         "!typescript-language-server",
         "!oxc",
