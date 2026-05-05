@@ -1,0 +1,73 @@
+{
+  "languages": {
+    "TypeScript": {
+      "language_servers": [
+        "vtsls",
+        "biome",
+        "!typescript-language-server",
+        "!oxc",
+      ],
+    },
+    "JavaScript": {
+      "language_servers": [
+        "vtsls",
+        "biome",
+        "!typescript-language-server",
+        "!oxc",
+      ],
+    },
+    "Vue.js": {
+      "language_servers": [
+        "vue-language-server",
+        "vtsls",
+        "biome",
+        "tailwindcss-language-server",
+        "!typescript-language-server",
+        "!oxc",
+      ],
+    },
+    "CSS": {
+      "language_servers": [
+        "tailwindcss-language-server",
+        "!css-language-server",
+      ],
+    },
+    "HTML": {
+      "language_servers": ["tailwindcss-language-server"],
+    },
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "tsdk": "./frontend/node_modules/typescript/lib",
+          "vtsls": {
+            "autoUseWorkspaceTsdk": true,
+          },
+        },
+      },
+    },
+    "vue-language-server": {
+      "settings": {
+        "vue": {
+          "hybridMode": true,
+        },
+      },
+    },
+    "biome": {
+      "settings": {
+        "require_config_file": true,
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "vue": "html",
+        },
+        "experimental": {
+          "classRegex": [["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]],
+        },
+      },
+    },
+  },
+}
