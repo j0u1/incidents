@@ -62,11 +62,11 @@ const isActive = computed(() => {
 }
 
 .btn {
-    @apply bg-bg cursor-pointer text-light-gray items-center flex gap-2.5 transition-all duration-300;
+    @apply bg-bg cursor-pointer text-light-gray items-center flex gap-2.5 transition-all duration-300 outline outline-transparent;
 }
 
 .btn.active {
-    @apply text-light-gray;
+    @apply text-primary outline-primary;
 }
 
 .btn-muted {
@@ -82,13 +82,14 @@ const isActive = computed(() => {
 }
 
 .btn-filled {
-    @apply border border-border bg-secondary rounded-lg flex gap-2.5 transition-all hover:border-primary hover:text-primary;
+    @apply border border-border bg-secondary rounded-lg flex gap-2.5 transition-all hover:border-primary;
 }
 
 .btn-filled.active {
     @apply bg-secondary border-transparent cursor-default;
 }
-.btn-filled.active:hover {
-    @apply text-light-gray;
+
+.btn-filled:not(.active):hover {
+    @apply text-primary;
 }
 </style>
