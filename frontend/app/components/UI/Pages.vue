@@ -2,6 +2,7 @@
 import { visibleNavigation } from "~/config/navigation";
 import { padding } from "~/data/dynamicStyles";
 import { LogOutIcon } from "@lucide/vue";
+import { NuxtLink } from "#components";
 
 const { signOut } = useAuth();
 const props = withDefaults(
@@ -19,7 +20,7 @@ const props = withDefaults(
 <template>
     <UIButtonBase
         variant="filled"
-        as="a"
+        :as="NuxtLink"
         position="left"
         v-for="page in visibleNavigation"
         :href="page.path"

@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@nuxt/image": "^2.0.0",
+    "oxfmt": "^0.48.0",
     "oxlint": "^1.61.0"
   }
 }

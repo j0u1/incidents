@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { LucideIcon } from "@lucide/vue";
 import { padding } from "~/data/dynamicStyles";
+import { NuxtLink } from '#components'
 
 const route = useRoute();
 const props = defineProps<{
     variant?: "primary" | "secondary" | "filled";
     icon?: LucideIcon;
-    as?: "button" | "a";
+    as?: "button" | typeof NuxtLink;
     href?: string;
     position?: "left" | "right" | "center";
     page?: { path: string };
@@ -35,7 +36,7 @@ const isActive = computed(() => {
             isActive && 'active',
             props.muted && 'btn-muted',
         ]"
-        :href="props.href && props.as === 'a' ? props.href : '/'"
+        :href="props.href && props.as === NuxtLink ? props.href : '/'"
     >
         <component
             v-if="props.icon"

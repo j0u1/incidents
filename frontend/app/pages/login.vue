@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { padding } from "~/data/dynamicStyles";
 import { MailIcon, LockIcon, ArrowRightIcon, LogInIcon } from "@lucide/vue";
-import { onClickOutside } from "@vueuse/core";
 import { useAuth } from "~/composables/useAuthClient";
-import { pages } from "~/data/pages";
 
 definePageMeta({
     layout: "auth",
@@ -59,14 +57,6 @@ async function signOut() {
     await authClient.signOut();
     window.location.href = `${window.location.origin}/`;
 }
-
-let clickCollapsed = () => {
-    isCollapsed.value = !isCollapsed.value;
-};
-
-onClickOutside(dropDownRef, () => {
-    dropDown.value = false;
-});
 
 type Form = {
     email: string;
