@@ -1,34 +1,9 @@
 <script setup lang="ts">
-import { LogOutIcon, LogInIcon } from "@lucide/vue";
-import { padding } from "~/data/dynamicStyles";
-import { visibleNavigation } from "~/config/navigation";
+import { LogInIcon } from "@lucide/vue";
 
 const authClient = useAuth();
 const session = authClient.useSession();
 const isMenuOpen = ref(false);
-
-async function signInWithGithub() {
-    const callbackURL = `${window.location.origin}/dashboard`;
-    const { data, error } = await authClient.signIn.social({
-        provider: "github",
-        callbackURL,
-        disableRedirect: true,
-    });
-
-    if (error) {
-        console.error("GitHub sign-in failed", error);
-        return;
-    }
-
-    if (data?.url) {
-        window.location.href = data.url;
-    }
-}
-
-async function signOut() {
-    await authClient.signOut();
-    window.location.replace("/");
-}
 </script>
 
 <template>
