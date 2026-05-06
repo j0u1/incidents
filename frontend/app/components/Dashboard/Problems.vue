@@ -17,7 +17,7 @@ const tickets = await getTickets()
                     <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
                     {{ ticket.createdBy?.name ?? "Неизвестный пользователь" }}
                 </div>
-                <p class="uppercase text-gray max-w-24 truncate">{{ ticket?.title }}</p>
+                <p class="uppercase text-gray min-w-24 max-w-24 truncate">{{ ticket?.title }}</p>
                 <p class="text-light-gray text-sm">
                     {{ ticket.description ?? "Нет описания" }}
                 </p>
