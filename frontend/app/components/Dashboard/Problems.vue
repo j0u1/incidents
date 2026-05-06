@@ -2,7 +2,8 @@
 import { TrashIcon } from "@lucide/vue";
 import { padding } from "~/data/dynamicStyles";
 
-const { tickets, deleteTicket } = useTickets()
+const { tickets, deleteTicket, getTickets } = useTickets()
+await getTickets()
 
 const handleDelete = async (id: string) => {
     await deleteTicket(id)
@@ -18,13 +19,15 @@ const handleDelete = async (id: string) => {
                 :class="padding"
             >
                 <div class="flex gap-4 items-center">
-                    <div class="inline-flex items-center gap-2">
+                    <div class="relative inline-flex items-center gap-2 group/avatar">
                         <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
-                        {{ ticket.createdBy?.name ?? "Неизвестный пользователь" }}
+                        <p class="absolute -bottom-14 -left-3.5 py-2 px-4 bg-secondary rounded-lg group-hover/avatar:opacity-100 opacity-0 transition-opacity duration-300 text-sm whitespace-nowrap text-gray border border-border">
+                            {{ ticket.createdBy?.name ?? "Неизвестный пользователь" }}
+                        </p>
                     </div>
                     <p class="uppercase text-gray min-w-24 max-w-24 truncate">{{ ticket?.title }}</p>
-                    <p class="text-light-gray text-sm">
-                        {{ ticket.description ?? "Нет описания" }}
+                   <p class="text-light-gray text-sm">
+                        {{ ticket.description || "Нет описания" }}
                     </p>
                 </div>
                 <div class="inline-flex items-center gap-2">
