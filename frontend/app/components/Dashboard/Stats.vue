@@ -1,10 +1,11 @@
 <script setup lang="ts">
 
-const ticket = await useTickets().getTickets()
-const problemsSection = [
+const { tickets, getTickets } = useTickets()
+await getTickets()
+const problemsSection = computed(() => [
     {
         title: "Всего проблем",
-        count: ticket.length,
+        count: tickets.value.length,
         color: "red",
     },
     {
@@ -17,7 +18,7 @@ const problemsSection = [
         count: 12,
         color: "green",
     },
-];
+]);
 </script>
 
 <template>
