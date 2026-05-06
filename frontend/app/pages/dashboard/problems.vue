@@ -37,8 +37,6 @@ useHead({
 
 <template>
     <UICard
-        :button="{ boolean: true, text: 'Добавить новую проблему' }"
-        :icon="PlusIcon"
         :noBorder="true"
     >
         <DashboardProblems />
