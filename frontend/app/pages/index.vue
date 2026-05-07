@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { NuxtLink } from "#components";
 import { LayoutIcon, LogInIcon } from "@lucide/vue";
 import { padding } from "~/data/dynamicStyles";
 
@@ -35,7 +36,7 @@ async function signInWithGithub() {
         <!-- <UIButton v-if="!session.data?.session" variant="login" long /> -->
         <UIButtonBase
             v-if="!session.data?.session"
-            as="a"
+            :as="NuxtLink"
             href="/login"
             variant="filled"
             :icon="LogInIcon"
@@ -44,7 +45,7 @@ async function signInWithGithub() {
         </UIButtonBase>
         <UIButtonBase
             v-else
-            as="a"
+            :as="NuxtLink"
             href="/dashboard"
             variant="filled"
             :icon="LayoutIcon"
