@@ -24,7 +24,7 @@ const handleDelete = async (id: string) => {
                             {{ "ИНЦ-" + ticket.number || "Нет номера"}}
                         </p>
                     </div>
-                    <p class="text-light-gray w-full max-w-62 truncate">{{ ticket?.title }}</p>
+                    <p class="text-light-gray w-full max-w-62 truncate">{{ ticket?.title || "Нет названия" }}</p>
                    <!-- <p class="text-light-gray text-sm">
                         {{ ticket.description || "Нет описания" }}
                     </p> -->
