@@ -15,15 +15,16 @@ const handleDelete = async (id: string) => {
         <div v-if="tickets.length > 0" class="flex flex-col gap-2.5">
             <div v-for="(ticket, i) in tickets.slice(0, 4)"
                     :key="i"
-                class="relative flex justify-between border border-border rounded-lg group"
-                :class="padding"
+                class="relative flex justify-between border border-border rounded-lg group p-4"
             >
                 <div class="flex gap-4 items-center">
-                    <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
-                    <p class="whitespace-nowrap text-gray">
-                        {{ "ИНЦ-" + ticket.number || "Нет номера"}}
-                    </p>
-                    <p class="text-light-gray w-full max-w-100 truncate">{{ ticket?.title }}</p>
+                    <div class="inline-flex items-center gap-2.5">
+                        <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
+                        <p class="whitespace-nowrap text-gray">
+                            {{ "ИНЦ-" + ticket.number || "Нет номера"}}
+                        </p>
+                    </div>
+                    <p class="text-light-gray w-full max-w-62 truncate">{{ ticket?.title }}</p>
                    <!-- <p class="text-light-gray text-sm">
                         {{ ticket.description || "Нет описания" }}
                     </p> -->
