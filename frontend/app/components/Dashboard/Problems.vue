@@ -19,16 +19,14 @@ const handleDelete = async (id: string) => {
                 :class="padding"
             >
                 <div class="flex gap-4 items-center">
-                    <div class="relative inline-flex items-center gap-2 group/avatar">
-                        <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
-                        <p class="absolute -bottom-14 -left-3.5 py-2 px-4 bg-secondary rounded-lg group-hover/avatar:opacity-100 opacity-0 transition-opacity duration-300 text-sm whitespace-nowrap text-gray border border-border">
-                            {{ ticket.createdBy?.name ?? "Неизвестный пользователь" }}
-                        </p>
-                    </div>
-                    <p class="uppercase text-gray min-w-24 max-w-24 truncate">{{ ticket?.title }}</p>
-                   <p class="text-light-gray text-sm">
-                        {{ ticket.description || "Нет описания" }}
+                    <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
+                    <p class="whitespace-nowrap">
+                        {{ "ИНЦ-" + ticket.number || "Нет номера"}}
                     </p>
+                    <p class="uppercase text-gray w-full max-w-100 truncate">{{ ticket?.title }}</p>
+                   <!-- <p class="text-light-gray text-sm">
+                        {{ ticket.description || "Нет описания" }}
+                    </p> -->
                 </div>
                 <div class="inline-flex items-center gap-2">
                     <TrashIcon class="size-4.5 text-gray opacity-0 group-hover:opacity-100 duration-300 transition-all hover:text-red cursor-pointer" @click="() => handleDelete(ticket.id)" />

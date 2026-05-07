@@ -1,5 +1,26 @@
 <script setup lang="ts">
-import { LucideIcon } from "lucide/vue";
+import type { LucideIcon } from '@lucide/vue';
+import { padding } from '~/data/dynamicStyles';
+
+const { signIn } = useAuth()
+
+async function signInWithGithub() {
+    const callbackURL = `${window.location.origin}/dashboard`;
+    const { data, error } = await signIn.social({
+        provider: "github",
+        callbackURL,
+        disableRedirect: true,
+    });
+
+    if (error) {
+        console.error("GitHub sign-in failed", error);
+        return;
+    }
+
+    if (data?.url) {
+        window.location.href = data.url;
+    }
+}
 
 interface Inputs {
     key: string;

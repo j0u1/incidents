@@ -1,18 +1,7 @@
 -- CreateTable
-CREATE TABLE "users" (
-    "id" TEXT NOT NULL,
-    "username" TEXT NOT NULL,
-    "avatar" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
-    "is_admin" BOOLEAN NOT NULL,
-
-    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "tickets" (
     "id" TEXT NOT NULL,
+    "number" SERIAL NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT,
@@ -48,6 +37,7 @@ CREATE TABLE "user" (
     "email" TEXT NOT NULL,
     "emailVerified" BOOLEAN NOT NULL DEFAULT false,
     "image" TEXT,
+    "isAdmin" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -108,6 +98,9 @@ CREATE TABLE "_tickets_categories" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "tickets_number_key" ON "tickets"("number");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "statuses_tickets_id_key" ON "statuses"("tickets_id");
 
 -- CreateIndex
@@ -129,10 +122,10 @@ CREATE INDEX "verification_identifier_idx" ON "verification"("identifier");
 CREATE INDEX "_tickets_categories_B_index" ON "_tickets_categories"("B");
 
 -- AddForeignKey
-ALTER TABLE "tickets" ADD CONSTRAINT "tickets_assigment_id_fkey" FOREIGN KEY ("assigment_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "tickets" ADD CONSTRAINT "tickets_assigment_id_fkey" FOREIGN KEY ("assigment_id") REFERENCES "user"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "tickets" ADD CONSTRAINT "tickets_created_by_id_fkey" FOREIGN KEY ("created_by_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "tickets" ADD CONSTRAINT "tickets_created_by_id_fkey" FOREIGN KEY ("created_by_id") REFERENCES "user"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "statuses" ADD CONSTRAINT "statuses_tickets_id_fkey" FOREIGN KEY ("tickets_id") REFERENCES "tickets"("id") ON DELETE SET NULL ON UPDATE CASCADE;

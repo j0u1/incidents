@@ -9,6 +9,7 @@ datasource db {
 
 model Tickets {
   id          String       @id @default(cuid())
+  number      Int          @unique @default(autoincrement())
   date        DateTime
   title       String
   description String?

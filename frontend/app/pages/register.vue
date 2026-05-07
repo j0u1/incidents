@@ -69,7 +69,7 @@ async function signUp() {
             class="rounded-xl outline outline-border p-6 flex flex-col gap-6 bg-bg"
         >
             <form
-                @submit.prevent="$emit('submit')"
+                @submit.prevent="signUp"
                 class="flex flex-col gap-4 w-full h-fit"
             >
                 <div class="flex flex-col gap-2">
