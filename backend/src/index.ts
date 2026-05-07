@@ -1,4 +1,6 @@
 import { Context, Elysia } from "elysia";
+import "dotenv/config";
+import { env } from "prisma/config";
 import { pingPong } from "./module/ping";
 import cors from "@elysiajs/cors";
 import { auth } from "./libs/auth";
@@ -16,7 +18,7 @@ const app = new Elysia()
   .use(pingPong)
   .use(
     cors({
-      origin: ["http://localhost:3000", "https://localhost:3000"],
+      origin: env("TRUSTED_URL"),
       credentials: true,
     }),
   )
