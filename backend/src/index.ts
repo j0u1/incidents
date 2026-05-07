@@ -16,13 +16,13 @@ const app = new Elysia()
   .use(pingPong)
   .use(
     cors({
-      origin: ["http://localhost:3001", "https://localhost:3001"],
+      origin: ["http://localhost:3000", "https://localhost:3000"],
       credentials: true,
     }),
   )
   .all("/api/auth/*", betterAuthView)
   .use(tickets)
-  .listen(3000);
+  .listen(8080);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
