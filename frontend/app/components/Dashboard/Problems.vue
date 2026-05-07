@@ -13,7 +13,7 @@ const handleDelete = async (id: string) => {
 <template>
     <Transition name="problems" mode="out-in">
         <div v-if="tickets.length > 0" class="flex flex-col gap-2.5">
-            <div v-for="(ticket, i) in tickets.slice(0, 4)"
+            <div v-for="(ticket, i) in tickets"
                     :key="i"
                 class="relative flex justify-between border border-border rounded-lg group p-4"
             >
