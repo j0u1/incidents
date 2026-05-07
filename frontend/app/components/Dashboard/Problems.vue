@@ -20,10 +20,10 @@ const handleDelete = async (id: string) => {
             >
                 <div class="flex gap-4 items-center">
                     <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
-                    <p class="whitespace-nowrap">
+                    <p class="whitespace-nowrap text-gray">
                         {{ "ИНЦ-" + ticket.number || "Нет номера"}}
                     </p>
-                    <p class="uppercase text-gray w-full max-w-100 truncate">{{ ticket?.title }}</p>
+                    <p class="text-light-gray w-full max-w-100 truncate">{{ ticket?.title }}</p>
                    <!-- <p class="text-light-gray text-sm">
                         {{ ticket.description || "Нет описания" }}
                     </p> -->
