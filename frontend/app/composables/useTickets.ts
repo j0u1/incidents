@@ -30,7 +30,7 @@ export function useTickets() {
   };
 
   const deleteTicket = async (id: string) => {
-    await api(`api/tickets/${id}`, {
+    await api(`/api/tickets/${id}`, {
       method: "DELETE",
     });
     tickets.value = tickets.value.filter((t) => t.id !== id);
