@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { TrashIcon } from "@lucide/vue";
-import { padding } from "~/data/dynamicStyles";
 
 const { tickets, deleteTicket, getTickets } = useTickets();
 await getTickets();
@@ -17,8 +16,8 @@ const handleDelete = async (id: string) => {
   <Transition name="problems" mode="out-in">
     <div v-if="tickets.length > 0" class="flex flex-col gap-2.5">
       <div
-        v-for="(ticket, i) in tickets"
-        :key="i"
+        v-for="ticket in tickets"
+        :key="ticket.id"
         class="relative flex justify-between border border-border rounded-lg group p-4"
       >
         <div class="flex gap-4 items-center w-full">
@@ -27,12 +26,12 @@ const handleDelete = async (id: string) => {
 
             <div class="flex items-center gap-2.5 w-fit">
               <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
-              <p class="whitespace-nowrap text-gray">
-                {{ "ИНЦ-" + ticket.number || "Нет номера" }}
+              <p class="whitespace-nowrap text-gray min-w-19">
+                {{ ticket.number ? "ИНЦ-" + ticket.number : "Нет номера" }}
               </p>
             </div>
           </div>
-          <p class="text-light-gray w-full max-w-62 truncate">
+          <p class="text-light-gray flex-1 min-w-0 truncate">
             {{ ticket?.title || "Нет названия" }}
           </p>
         </div>
