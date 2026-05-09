@@ -31,8 +31,9 @@ const ticketCountByStatus = computed(() => {
         :style="{ backgroundColor: `var(--${ps.color})` }"
       />
       <div class="flex items-center gap-3.5">
-        <!-- <component :is="ps.icon" class="text-gray size-6.5" /> -->
-        {{ ticketCountByStatus[ps.name] ?? 0 }}
+         <p class="text-5xl font-medium w-fit">
+           {{ ticketCountByStatus[ps.name] ?? 0 }}
+         </p>
       </div>
       <span class="text-sm text-gray">{{ ps.name }}</span>
     </div>
