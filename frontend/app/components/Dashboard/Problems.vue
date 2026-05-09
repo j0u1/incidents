@@ -18,11 +18,16 @@ const handleDelete = async (id: string) => {
                 class="relative flex justify-between border border-border rounded-lg group p-4"
             >
                 <div class="flex gap-4 items-center w-full">
-                    <div class="flex items-center gap-2.5 w-fit">
-                        <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
+                    <div class="flex items-center gap-3.5 w-fit">
+                        
+                        <div class="h-4.5 w-1.25 rounded-lg bg-red" />
+
+                        <div class="flex items-center gap-2.5 w-fit">
+                            <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
                         <p class="whitespace-nowrap text-gray">
                             {{ "ИНЦ-" + ticket.number || "Нет номера"}}
                         </p>
+                        </div>
                     </div>
                     <p class="text-light-gray w-full max-w-62 truncate">{{ ticket?.title || "Нет названия" }}</p>
                 </div>
