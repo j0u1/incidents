@@ -10,7 +10,7 @@ const pageTitle = computed(() => {
     <div class="flex">
         <UISidebar class="hidden lg:flex" />
 
-        <div class="flex flex-col gap-5 w-full">
+        <div class="ml-58 flex flex-col gap-5 w-full">
             <DashboardHeading :title="pageTitle" />
             <hr class="h-0.5 w-full border-border" />
             <section class="px-4 lg:px-5 duration-300 transition-all size-full flex flex-col gap-5">

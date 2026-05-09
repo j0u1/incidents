@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-import { LogInIcon, LogOutIcon, ChevronDownIcon } from "@lucide/vue";
+import { LogInIcon, LogOutIcon, ChevronLeftIcon } from "@lucide/vue";
 import { onClickOutside } from "@vueuse/core";
 import { useAuth } from "~/composables/useAuthClient";
 import { padding } from "~/data/dynamicStyles";
-import { visibleNavigation } from "~/config/navigation";
 
-const route = useRoute();
 const isCollapsed = ref(false);
 const dropDownRef = ref(null);
 const dropDown = ref(false);
@@ -13,110 +11,108 @@ const authClient = useAuth();
 const session = authClient.useSession();
 
 async function signInWithGithub() {
-    const callbackURL = `${window.location.origin}/dashboard`;
-    const { data, error } = await authClient.signIn.social({
-        provider: "github",
-        callbackURL,
-        disableRedirect: true,
-    });
+  const callbackURL = `${window.location.origin}/dashboard`;
+  const { data, error } = await authClient.signIn.social({
+    provider: "github",
+    callbackURL,
+    disableRedirect: true,
+  });
 
-    if (error) {
-        console.error("GitHub sign-in failed", error);
-        return;
-    }
+  if (error) {
+    console.error("GitHub sign-in failed", error);
+    return;
+  }
 
-    if (data?.url) {
-        window.location.href = data.url;
-    }
+  if (data?.url) {
+    window.location.href = data.url;
+  }
 }
 
 async function signOut() {
-    await authClient.signOut();
-    window.location.href = `${window.location.origin}/`;
+  await authClient.signOut();
+  window.location.href = `${window.location.origin}/`;
 }
 
 let clickCollapsed = () => {
-    isCollapsed.value = !isCollapsed.value;
+  isCollapsed.value = !isCollapsed.value;
 };
 
 onClickOutside(dropDownRef, () => {
-    dropDown.value = false;
+  dropDown.value = false;
 });
 </script>
 
 <template>
-    <aside
-        class="relative h-screen flex flex-col gap-4 duration-300 transition-all border-r border-border"
-        :class="[isCollapsed ? 'w-19.75' : 'w-3/14 min-w-56']"
+  <aside class="fixed h-screen p-2.5 pr-0 duration-300 transition-all">
+    <div
+      class="relative border border-border p-2.5 rounded-lg space-y-0 bg-bg duration-500 transition-all"
+      :class="[isCollapsed ? 'w-19.75' : 'w-3/14 min-w-56']"
     >
-        <div
-            @click="clickCollapsed"
-            class="absolute -right-1 h-full w-2 cursor-col-resize"
-        />
-        <UISidebarHead :isCollapsed="isCollapsed" @toggle="clickCollapsed" />
-        <hr class="h-0.5 w-full border-border" />
-         <div class="space-y-3.5 px-3" :class="[isCollapsed && 'w-fit']">
-             <UIPages :muted="true" :noText="isCollapsed ? true : false" />
-        </div>
-        <div
-            ref="dropDownRef"
-            @click="session.data ? (dropDown = !dropDown) : ''"
-            class="absolute flex border items-center gap-2.5 duration-200 transition-all cursor-pointer z-1 group"
-            :class="[
-                isCollapsed
-                    ? 'bottom-4 left-1/2 -translate-x-1/2 border-transparent rounded-none'
-                    : ['bottom-4 left-4 right-4 border border-border rounded-lg', padding],
-                dropDown ? 'bg-secondary' : 'bg-bg',
-            ]"
+      <div class="m-2.5 pb-3">
+        <NuxtLink to="/">
+          <IconsLogosFull />
+        </NuxtLink>
+        <button
+          @click="clickCollapsed"
+          class="absolute -right-3 top-1/2 -translate-y-1/2 bg-bg border border-border rounded-full p-1.5 hover:bg-secondary duration-300 transition-all cursor-pointer"
         >
-            <button
-                v-if="!session.data"
-                type="button"
-                class="flex items-center gap-1.5 text-sm text-light-gray hover:text-primary size-full cursor-pointer duration-300 transition-all"
-                @click="signInWithGithub"
-            >
-                <LogInIcon class="size-4.5" />
-                Войти
-            </button>
+          <ChevronLeftIcon
+            class="size-4.5 text-gray duration-300 transition-all"
+            :class="[!isCollapsed ? 'rotate-180' : 'rotate-0']"
+          />
+        </button>
+      </div>
+      <div class="space-y-2" :class="[isCollapsed && 'w-full']">
+        <UIPages :muted="true" :noText="isCollapsed ? true : false" />
+      </div>
 
-            <div
-                v-else
-                class="relative flex items-center gap-2.5 w-full select-none"
-            >
-                <UIAvatar
-                    :src="session.data.user.image ?? undefined"
-                    class="aspect-1/1"
-                    :class="isCollapsed ? 'size-8.5' : 'size-10'"
-                />
-                <div v-if="!isCollapsed">
-                    <p>{{ session.data.user.name }}</p>
-                    <p class="text-sm text-light-gray">
-                        {{ session.data.user.email }}
-                    </p>
-                </div>
-                <ChevronDownIcon
-                    class="absolute right-0 size-4.5 text-gray shrink-0 duration-300 transition-all"
-                    :class="[dropDown ? 'rotate-180' : 'group-hover:rotate-90', isCollapsed ? 'opacity-0 scale-0' : 'opacity-100 scale-100']"
-                />
-            </div>
+      <div
+        ref="dropDownRef"
+        @click="session.data ? (dropDown = !dropDown) : ''"
+        class="absolute bottom-2.5 inset-x-2.5 p-2.5 border border-border rounded-lg flex items-center gap-2.5 duration-200 transition-all cursor-pointer"
+      >
+        <button
+          v-if="!session.data"
+          type="button"
+          class="flex items-center gap-1.5 text-sm text-light-gray hover:text-primary size-full cursor-pointer duration-300 transition-all"
+          @click="signInWithGithub"
+        >
+          <LogInIcon class="size-4.5" />
+          Войти
+        </button>
+
+        <div v-else class="relative flex items-center gap-2.5 w-full select-none">
+          <UIAvatar
+            :src="session.data.user.image ?? undefined"
+            class="aspect-square"
+            :class="isCollapsed ? 'size-8.5' : 'size-10'"
+          />
+          <div v-if="!isCollapsed">
+            <p>{{ session.data.user.name }}</p>
+            <p class="text-sm text-light-gray">
+              {{ session.data.user.email }}
+            </p>
+          </div>
         </div>
         <div
-            class="absolute left-4 right-4 border border-border rounded-lg flex flex-col items-center gap-2.5 duration-200 transition-all bg-secondary origin-bottom"
-            :class="[
-                !session.data ? 'opacity-0' : 'opacity-100',
-                padding,
-                dropDown ? 'bottom-24 scale-100' : 'bottom-4 scale-0',
-            ]"
+          class="absolute inset-x-0 border border-border rounded-lg flex flex-col items-center gap-2.5 duration-200 transition-all bg-secondary origin-bottom"
+          :class="[
+            !session.data ? 'opacity-0' : 'opacity-100',
+            padding,
+            dropDown ? 'bottom-19 scale-100' : 'bottom-16 scale-0',
+          ]"
         >
-            <button
-                @click="signOut"
-                type="button"
-                class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-300 cursor-pointer"
-                :class="padding"
-            >
-                <LogOutIcon class="size-4.5" />
-                Выйти
-            </button>
+          <button
+            @click="signOut"
+            type="button"
+            class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-300 cursor-pointer"
+            :class="padding"
+          >
+            <LogOutIcon class="size-4.5" />
+            Выйти
+          </button>
         </div>
-    </aside>
+      </div>
+    </div>
+  </aside>
 </template>
