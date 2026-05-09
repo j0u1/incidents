@@ -19,17 +19,17 @@ model Tickets {
   createdBy   User?        @relation("created_by", fields: [createdById], references: [id])
   createdById String?      @map("created_by_id")
 
-  status Statuses?
+  status   Statuses? @relation(fields: [statusId], references: [id])
+  statusId String?   @map("status_id")
 
   @@map("tickets")
 }
 
 model Statuses {
-  id        String   @id @default(cuid())
-  name      String
-  color     String
-  tickets   Tickets? @relation(fields: [ticketsId], references: [id])
-  ticketsId String?  @unique @map("tickets_id")
+  id      String    @id @default(cuid())
+  name    String
+  color   String
+  tickets Tickets[]
 
   @@map("statuses")
 }

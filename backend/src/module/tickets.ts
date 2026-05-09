@@ -18,6 +18,7 @@ export const tickets = new Elysia({ prefix: "/api/tickets" })
           description: body.description,
           date: new Date(),
           createdById: section.user.id,
+          statusId: body.statusId,
         },
       });
 
@@ -27,6 +28,7 @@ export const tickets = new Elysia({ prefix: "/api/tickets" })
       body: t.Object({
         title: t.String(),
         description: t.Optional(t.String()),
+        statusId: t.Optional(t.String()),
       }),
     },
   )

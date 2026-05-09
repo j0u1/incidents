@@ -1,1 +1,1 @@
-export const projectName = "аксис деск";
+export const projectName = "инциденты";

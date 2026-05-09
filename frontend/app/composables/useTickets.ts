@@ -15,10 +15,10 @@ const tickets = ref<Ticket[]>([]);
 export function useTickets() {
   const api = useApi();
 
-  const createTicket = async (title: string, description?: string) => {
+  const createTicket = async (title: string, description?: string, statusId?: string) => {
     const ticket = await api("/api/tickets", {
       method: "POST",
-      body: { title, description },
+      body: { title, description, statusId },
     });
     tickets.value = await getTickets();
     return ticket;

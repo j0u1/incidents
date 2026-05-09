@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { PlusIcon, XIcon } from "@lucide/vue";
-import { padding } from "~/data/dynamicStyles";
+const { statuses, getStatuses } = useStatuses()
+await getStatuses()
 
 const openModal = ref(false)
 const error = ref("")
@@ -8,6 +9,7 @@ const createTicket = useTickets().createTicket
 const form = reactive({
     title: "",
     description: "",
+    statusId: statuses.value[0]?.id ?? ""
 })
 
 const handleCreate = async () => {
@@ -16,7 +18,7 @@ const handleCreate = async () => {
         return
     }
 
-    await createTicket(form.title, form.description)
+    await createTicket(form.title, form.description, form.statusId)
     openModal.value = false
 }
 
