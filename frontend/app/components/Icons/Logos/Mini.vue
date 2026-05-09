@@ -21,6 +21,7 @@ const logoSize = computed(() => {
     width="26"
     height="26"
     fill="none"
+    class="shrink-0"
     :style="{ width: logoSize, height: logoSize }"
   >
     <path fill="#60a5fa" d="M13 9.75a3.25 3.25 0 1 1 0 6.5 3.25 3.25 0 0 1 0-6.5" />
