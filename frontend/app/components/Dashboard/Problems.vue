@@ -25,9 +25,6 @@ const handleDelete = async (id: string) => {
                         </p>
                     </div>
                     <p class="text-light-gray w-full max-w-62 truncate">{{ ticket?.title || "Нет названия" }}</p>
-                   <!-- <p class="text-light-gray text-sm">
-                        {{ ticket.description || "Нет описания" }}
-                    </p> -->
                 </div>
                 <div class="inline-flex items-center gap-2">
                     <TrashIcon class="size-4.5 text-gray opacity-0 group-hover:opacity-100 duration-300 transition-all hover:text-red cursor-pointer" @click="() => handleDelete(ticket.id)" />
