@@ -56,17 +56,16 @@ onClickOutside(dropDownRef, () => {
         <UISidebarHead :isCollapsed="isCollapsed" @toggle="clickCollapsed" />
         <hr class="h-0.5 w-full border-border" />
          <div class="space-y-3.5 px-3" :class="[isCollapsed && 'w-fit']">
-             <UIPages :muted="true" />
+             <UIPages :muted="true" :noText="isCollapsed ? true : false" />
         </div>
         <div
             ref="dropDownRef"
             @click="session.data ? (dropDown = !dropDown) : ''"
-            class="absolute border border-border rounded-lg flex items-center gap-2.5 duration-200 transition-all cursor-pointer z-10 group"
+            class="absolute flex border items-center gap-2.5 duration-200 transition-all cursor-pointer z-1 group"
             :class="[
-                padding,
                 isCollapsed
-                    ? 'bottom-4 left-1/2 -translate-x-1/2 size-12.5'
-                    : 'bottom-4 left-4 right-4',
+                    ? 'bottom-4 left-1/2 -translate-x-1/2 border-transparent rounded-none'
+                    : ['bottom-4 left-4 right-4 border border-border rounded-lg', padding],
                 dropDown ? 'bg-secondary' : 'bg-bg',
             ]"
         >
@@ -86,7 +85,8 @@ onClickOutside(dropDownRef, () => {
             >
                 <UIAvatar
                     :src="session.data.user.image ?? undefined"
-                    :class="isCollapsed ? 'size-6' : 'size-10'"
+                    class="aspect-1/1"
+                    :class="isCollapsed ? 'size-8.5' : 'size-10'"
                 />
                 <div v-if="!isCollapsed">
                     <p>{{ session.data.user.name }}</p>
@@ -96,7 +96,7 @@ onClickOutside(dropDownRef, () => {
                 </div>
                 <ChevronDownIcon
                     class="absolute right-0 size-4.5 text-gray shrink-0 duration-300 transition-all"
-                    :class="dropDown ? 'rotate-180' : 'group-hover:rotate-90'"
+                    :class="[dropDown ? 'rotate-180' : 'group-hover:rotate-90', isCollapsed ? 'opacity-0 scale-0' : 'opacity-100 scale-100']"
                 />
             </div>
         </div>

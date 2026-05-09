@@ -9,10 +9,12 @@ const props = withDefaults(
     defineProps<{
         dropDown?: boolean;
         muted?: boolean;
+        noText?: boolean;
     }>(),
     {
         dropDown: false,
         muted: false,
+        noText: false,
     },
 );
 </script>
@@ -28,7 +30,7 @@ const props = withDefaults(
         :page="page"
         :muted="props?.muted"
     >
-        {{ page.title }}
+        {{ noText ? '' : page.title }}
     </UIButtonBase>
     <template v-if="props.dropDown">
         <hr class="border-border w-full" />
