@@ -1,10 +1,4 @@
-import {
-  Layout,
-  Users2,
-  TriangleAlert,
-  User2,
-  type LucideIcon,
-} from "@lucide/vue";
+import { Layout, Users2, TriangleAlert, type LucideIcon, CircleDotIcon } from "@lucide/vue";
 import { features } from "./features";
 
 interface NavigationItem {
@@ -29,7 +23,12 @@ const navigation: NavigationItem[] = [
     icon: Users2,
     feature: "users",
   },
-  { title: "Аккаунт", path: "/account", icon: User2, feature: "auth" },
+  // { title: "Аккаунт", path: "/account", icon: User2, feature: "auth" },
+  {
+    title: "Статусы",
+    path: `${pagesDashboardPath}/statuses`,
+    icon: CircleDotIcon,
+  },
 ];
 export const visibleNavigation = navigation.filter(
   (item) => !item.feature || features[item.feature],

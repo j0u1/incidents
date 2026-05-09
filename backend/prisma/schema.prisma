@@ -26,10 +26,11 @@ model Tickets {
 }
 
 model Statuses {
-  id      String    @id @default(cuid())
-  name    String
-  color   String
-  tickets Tickets[]
+  id          String    @id @default(cuid())
+  name        String
+  color       String
+  description String?
+  tickets     Tickets[]
 
   @@map("statuses")
 }

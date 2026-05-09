@@ -3,6 +3,7 @@ interface Status {
   name: string;
   color: string;
   ticketsId: null;
+  description: string;
 }
 
 const statuses = ref<Status[]>([]);
@@ -10,10 +11,10 @@ const statuses = ref<Status[]>([]);
 export function useStatuses() {
   const api = useApi();
 
-  const createStatus = async (name: string, color: string) => {
+  const createStatus = async (name: string, color: string, description?: string) => {
     const status = await api("/api/statuses", {
       method: "POST",
-      body: { name, color },
+      body: { name, description, color },
     });
     statuses.value = await getStatuses();
     return status;
@@ -31,10 +32,19 @@ export function useStatuses() {
     statuses.value = statuses.value.filter((s) => s.id !== id);
   };
 
+  const updateStatus = async (id: string, name?: string, color?: string, description?: string) => {
+    const status = await api(`/api/statuses/${id}`, {
+      method: "PATCH",
+      body: { name, color, description },
+    });
+    return status;
+  };
+
   return {
     statuses,
     createStatus,
     getStatuses,
     deleteStatus,
+    updateStatus,
   };
 }

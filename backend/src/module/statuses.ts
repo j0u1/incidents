@@ -6,6 +6,7 @@ const bodyFunc = {
   body: t.Object({
     name: t.String(),
     color: t.String(),
+    description: t.Optional(t.String()),
   }),
 };
 
@@ -23,6 +24,7 @@ export const statuses = new Elysia({ prefix: "/api/statuses" })
         data: {
           name: body.name,
           color: body.color,
+          description: body.description,
         },
       });
       return status;

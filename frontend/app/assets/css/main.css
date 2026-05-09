@@ -2,49 +2,53 @@
 @import "tailwindcss";
 
 :root {
-    --text: #e9e9e9;
-    --bg: #101012;
-    --secondary: #161616;
-    --border: #2d2d2d;
-    --gray: #757575;
-    --light-gray: #b6b6b6;
-    --primary: #87c2fa;
-    --red: #e03b3b;
-    --green: #26a249;
-    --orange: #eb7b2a;
+  --text: #e9e9e9;
+  --bg: #101012;
+  --secondary: #161616;
+  --border: #2d2d2d;
+  --gray: #757575;
+  --light-gray: #b6b6b6;
+  --primary: #87c2fa;
+  --red: #e05252;
+  --green: #3db56a;
+  --orange: #f0893a;
+  --purple: #9b7fe8;
+  --blue: #4a9fe0;
+  --yellow: #e0c040;
+  --pink: #e06fa0;
 }
 
 ::selection {
-    color: var(--bg);
-    background-color: var(--primary);
+  color: var(--bg);
+  background-color: var(--primary);
 }
 
 * {
-    font-family: "Onest", Arial, Helvetica, sans-serif;
+  font-family: "Onest", Arial, Helvetica, sans-serif;
 }
 
 html {
-    background-color: var(--bg);
-    color: var(--text);
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 label {
-    @apply text-light-gray;
+  @apply text-light-gray;
 }
 
 @theme {
-    --color-text: var(--text);
-    --color-bg: var(--bg);
-    --color-secondary: var(--secondary);
-    --color-border: var(--border);
-    --color-gray: var(--gray);
-    --color-light-gray: var(--light-gray);
-    --color-primary: var(--primary);
-    --color-red: var(--red);
-    --color-green: var(--green);
-    --color-orange: var(--orange);
+  --color-text: var(--text);
+  --color-bg: var(--bg);
+  --color-secondary: var(--secondary);
+  --color-border: var(--border);
+  --color-gray: var(--gray);
+  --color-light-gray: var(--light-gray);
+  --color-primary: var(--primary);
+  --color-red: var(--red);
+  --color-green: var(--green);
+  --color-orange: var(--orange);
 }
 
 #__nuxt {
-    @apply space-y-8;
+  @apply space-y-8;
 }
