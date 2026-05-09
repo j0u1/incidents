@@ -5,6 +5,7 @@ import { pingPong } from "./module/ping";
 import cors from "@elysiajs/cors";
 import { auth } from "./libs/auth";
 import { tickets } from "./module/tickets";
+import { statuses } from "./module/statuses";
 
 const betterAuthView = (context: Context) => {
   if (["POST", "GET"].includes(context.request.method)) {
@@ -24,6 +25,7 @@ const app = new Elysia()
   )
   .all("/api/auth/*", betterAuthView)
   .use(tickets)
+  .use(statuses)
   .listen(8080);
 
 console.log(
