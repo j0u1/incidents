@@ -6,7 +6,7 @@ definePageMeta({
     pageTitle: "Обзор",
 });
 
-const seoTitle = "Обзор // " + projectName;
+const seoTitle = "Обзор — " + projectName;
 const seoDescription =
     "Внутренний дашборд " + projectName + " для быстрого обзора проблем, задач в работе, последних инцидентов и статистики по категориям.";
 

@@ -9,7 +9,7 @@ definePageMeta({
     pageTitle: "Участники",
 });
 
-const seoTitle = "Участники // " + projectName;
+const seoTitle = "Участники — " + projectName;
 const seoDescription =
     "Раздел " +
     projectName +

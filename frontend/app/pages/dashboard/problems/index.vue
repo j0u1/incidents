@@ -7,7 +7,7 @@ definePageMeta({
     pageTitle: "Проблемы",
 });
 
-const seoTitle = "Проблемы // " + projectName;
+const seoTitle = "Проблемы — " + projectName;
 const seoDescription =
     "Раздел " + projectName + " с актуальными проблемами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
 
