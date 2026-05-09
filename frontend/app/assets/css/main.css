@@ -2,20 +2,21 @@
 @import "tailwindcss";
 
 :root {
-  --text: #e9e9e9;
-  --bg: #101012;
-  --secondary: #161616;
-  --border: #2d2d2d;
-  --gray: #757575;
-  --light-gray: #b6b6b6;
-  --primary: #87c2fa;
-  --red: #e05252;
-  --green: #3db56a;
-  --orange: #f0893a;
-  --purple: #9b7fe8;
-  --blue: #4a9fe0;
-  --yellow: #e0c040;
-  --pink: #e06fa0;
+  --text: #f0f0f0;
+  --bg: #0d0d0f;
+  --secondary: #151516;
+  --tertiary: #1c1c1d;
+  --border: #27272a;
+  --gray: #71717a;
+  --light-gray: #a1a1aa;
+  --primary: #6ea8f7;
+  --red: #f87171;
+  --green: #4ade80;
+  --orange: #fb923c;
+  --purple: #a78bfa;
+  --blue: #60a5fa;
+  --yellow: #fbbf24;
+  --pink: #f472b6;
 }
 
 ::selection {
@@ -40,6 +41,7 @@ label {
   --color-text: var(--text);
   --color-bg: var(--bg);
   --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
   --color-border: var(--border);
   --color-gray: var(--gray);
   --color-light-gray: var(--light-gray);
