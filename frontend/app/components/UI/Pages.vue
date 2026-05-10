@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { visibleNavigation } from "~/config/navigation";
-import { padding } from "~/data/dynamicStyles";
 import { LogOutIcon } from "@lucide/vue";
 import { NuxtLink } from "#components";
 
@@ -32,7 +31,7 @@ const props = withDefaults(
     :muted="props?.muted"
     :class="position === 'center' && 'w-full'"
   >
-    {{ noText ? undefined : page.title }}
+    {{ !noText ? page.title : '' }}
   </UIButtonBase>
   <template v-if="props.dropDown">
     <hr class="border-border w-full" />

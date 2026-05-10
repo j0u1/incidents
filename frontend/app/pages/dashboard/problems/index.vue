@@ -39,7 +39,5 @@ useHead({
 </script>
 
 <template>
-  <UICard :noBorder="true">
-    <DashboardProblems />
-  </UICard>
+  <DashboardProblems />
 </template>

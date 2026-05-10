@@ -6,11 +6,12 @@ interface NavigationItem {
   path: string;
   icon: LucideIcon;
   feature?: keyof typeof features;
+  exact?: boolean;
 }
 
 const pagesDashboardPath = "/dashboard";
 const navigation: NavigationItem[] = [
-  { title: "Обзор", path: pagesDashboardPath, icon: Layout },
+  { title: "Обзор", path: pagesDashboardPath, icon: Layout, exact: true },
   {
     title: "Проблемы",
     path: `${pagesDashboardPath}/problems`,

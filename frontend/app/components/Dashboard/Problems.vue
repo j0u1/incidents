@@ -15,9 +15,10 @@ const handleDelete = async (id: string) => {
 <template>
   <Transition name="problems" mode="out-in">
     <div v-if="tickets.length > 0" class="flex flex-col gap-2.5">
-      <div
+      <NuxtLink
         v-for="ticket in tickets"
         :key="ticket.id"
+        :to="`/dashboard/problems/${ticket.id}`"
         class="relative flex justify-between border border-border rounded-lg group p-4"
       >
         <div class="flex gap-4 items-center w-full">
@@ -45,7 +46,7 @@ const handleDelete = async (id: string) => {
             {{ new Date(ticket.date).toLocaleDateString("ru-Ru") }}
           </p>
         </div>
-      </div>
+      </NuxtLink>
     </div>
     <p v-else class="text-light-gray">Все проблемы решены! Отличная работа!</p>
   </Transition>

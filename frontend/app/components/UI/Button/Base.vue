@@ -10,7 +10,7 @@ const props = defineProps<{
   as?: "button" | typeof NuxtLink;
   href?: string;
   position?: "left" | "right" | "center";
-  page?: { path: string };
+  page?: { path: string; exact?: boolean };
   muted?: boolean;
 }>();
 
@@ -21,14 +21,17 @@ const variants = {
 } as const;
 
 const isActive = computed(() => {
-  return props.page?.path === route.path;
+  if (!props.page?.path) return false;
+  const path = props.page.path;
+  if (props.page.exact || path === "/") return route.path === path;
+  return route.path === path || route.path.startsWith(path + "/");
 });
 
 const classes = computed(() => {
   return cn(
     "btn",
+    unref(padding),
     variants[props.variant ?? "primary"],
-    padding,
     props.position ?? "center",
     isActive.value && "active",
     props.muted && "btn-muted",
@@ -40,7 +43,7 @@ const classes = computed(() => {
   <component
     :is="isActive ? 'button' : (props.as ?? 'button')"
     :class="classes"
-    :href="props.href && props.as === NuxtLink ? props.href : '/'"
+    :href="props.as === NuxtLink ? (props.href ?? props.page?.path ?? '/') : undefined"
   >
     <component v-if="props.icon" :is="props.icon" class="size-4.5 shrink-0" />
     <slot />
@@ -88,5 +91,13 @@ const classes = computed(() => {
 
 .btn-filled:not(.active):hover {
   @apply text-primary;
+}
+
+.btn-primary.active {
+  @apply border-primary text-primary cursor-default;
+}
+
+.btn-secondary.active {
+  @apply border-primary text-primary cursor-default;
 }
 </style>
