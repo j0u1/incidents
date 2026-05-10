@@ -4,7 +4,9 @@ import { onClickOutside } from "@vueuse/core";
 import { useAuth } from "~/composables/useAuthClient";
 import { padding } from "~/data/dynamicStyles";
 
-const isCollapsed = ref(false);
+const { isOpen, toggle } = useSidebar();
+const isCollapsed = computed(() => !isOpen.value);
+const clickCollapsed = toggle;
 const dropDownRef = ref(null);
 const dropDown = ref(false);
 const authClient = useAuth();
@@ -33,10 +35,6 @@ async function signOut() {
   window.location.href = `${window.location.origin}/`;
 }
 
-let clickCollapsed = () => {
-  isCollapsed.value = !isCollapsed.value;
-};
-
 onClickOutside(dropDownRef, () => {
   dropDown.value = false;
 });
@@ -45,12 +43,12 @@ onClickOutside(dropDownRef, () => {
 <template>
   <aside class="fixed h-screen p-2.5 pr-0 duration-300 transition-all">
     <div
-      class="relative border border-border p-2.5 rounded-lg space-y-0 bg-bg duration-500 transition-all"
-      :class="[isCollapsed ? 'w-19.75' : 'w-3/14 min-w-56']"
+      class="relative border border-border p-2.5 rounded-lg space-y-0 bg-bg duration-200 transition-all"
+      :class="[isCollapsed ? 'min-w-19.75' : 'w-3/14 min-w-56']"
     >
       <div class="m-2.5 pb-3">
         <NuxtLink to="/">
-          <IconsLogosFull />
+          <IconsLogosFull :centered="isCollapsed" />
         </NuxtLink>
         <button
           @click="clickCollapsed"
@@ -63,7 +61,11 @@ onClickOutside(dropDownRef, () => {
         </button>
       </div>
       <div class="space-y-2" :class="[isCollapsed && 'w-full']">
-        <UIPages :muted="true" :noText="isCollapsed ? true : false" />
+        <UIPages
+          :muted="true"
+          :noText="isCollapsed ? true : false"
+          :position="isCollapsed ? 'center' : 'left'"
+        />
       </div>
 
       <div
