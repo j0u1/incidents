@@ -82,11 +82,11 @@ const classes = computed(() => {
 }
 
 .btn.btn-muted:is(a) {
-  @apply text-gray border-transparent bg-transparent hover:bg-secondary;
+  @apply text-gray border-transparent bg-transparent hover:border-gray hover:text-light-gray;
 }
 
 .btn-filled.active {
-  @apply text-primary bg-tertiary border-transparent cursor-default;
+  @apply text-primary bg-secondary border-primary/70 cursor-default;
 }
 
 .btn-filled:not(.active):hover {
