@@ -149,4 +149,13 @@ const handleDelete = async (id: string) => {
 .status .icon {
   @apply size-4 aspect-square;
 }
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.32s ease;
+}
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
 </style>
