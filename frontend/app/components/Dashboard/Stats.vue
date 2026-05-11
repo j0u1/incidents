@@ -40,13 +40,7 @@ const handleDelete = async (id: string) => {
           {{ ticketCountByStatus[ps.name] ?? 0 }}
         </p>
       </div>
-      <div class="flex items-center gap-2">
-        <span class="text-light-gray">{{ ps.name }}</span>
-        <TrashIcon
-          class="size-4.5 text-gray hover:text-red cursor-pointer opacity-0 group-hover/status:opacity-100 transition-all duration-300"
-          @click="() => handleDelete(ps.id)"
-        />
-      </div>
+      <span class="text-light-gray">{{ ps.name }}</span>
       <span class="text-sm text-gray">
         {{ ps.description || "Нет описания" }}
       </span>
