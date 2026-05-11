@@ -60,7 +60,7 @@ withDefaults(
             placeholder="Описание проблемы"
             class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
           />
-          <UIButtonBase @click="handleCreate"> Создать </UIButtonBase>
+          <UIButtonBase @click="handleCreate" :icon="PlusIcon"> Создать </UIButtonBase>
         </div>
       </div>
     </div>
