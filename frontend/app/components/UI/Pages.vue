@@ -31,7 +31,7 @@ const props = withDefaults(
     :muted="props?.muted"
     :class="position === 'center' && 'w-full'"
   >
-    {{ !noText ? page.title : '' }}
+    {{ !noText ? page.title : "" }}
   </UIButtonBase>
   <template v-if="props.dropDown">
     <hr class="border-border w-full" />

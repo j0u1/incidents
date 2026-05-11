@@ -10,13 +10,17 @@ await getStatuses();
 const handleDelete = async (id: string) => {
   await deleteTicket(id);
 };
+
+defineProps<{
+  isShort?: boolean;
+}>();
 </script>
 
 <template>
   <Transition name="problems" mode="out-in">
-    <div v-if="tickets.length > 0" class="flex flex-col gap-2.5 w-full max-w-1/2">
+    <div v-if="tickets.length > 0" class="flex flex-col gap-2.5 w-full" :class="isShort && 'max-w-1/2'">
       <NuxtLink
-        v-for="ticket in tickets"
+        v-for="ticket in (isShort ? tickets.slice(0, 5) : tickets)"
         :key="ticket.id"
         :to="`/dashboard/problems/${ticket.id}`"
         class="relative flex justify-between border border-border rounded-lg group p-4 gap-4"
