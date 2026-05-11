@@ -6,7 +6,7 @@ import { NuxtLink } from "#components";
 const route = useRoute();
 const props = defineProps<{
   variant?: "primary" | "secondary" | "filled";
-  icon?: LucideIcon;
+  icon?: LucideIcon | Component;
   as?: "button" | typeof NuxtLink;
   href?: string;
   position?: "left" | "right" | "center";
