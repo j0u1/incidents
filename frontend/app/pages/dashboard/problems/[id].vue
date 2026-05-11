@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PenIcon, TrashIcon, XIcon } from "@lucide/vue";
+import { ChevronLeftIcon, PenIcon, TrashIcon, XIcon } from "@lucide/vue";
 import { projectName } from "~/data/project";
 
 const route = useRoute();
@@ -74,13 +74,22 @@ const handleEdit = async () => {
   ticket.value = await getTicketById(id as string);
   openModal.value = false;
 };
+
+const returnToProblems = () => {
+  navigateTo("/dashboard/problems");
+};
 </script>
 
 <template>
   <div class="flex gap-4 h-full">
-    <p class="w-3/4 text-light-gray">
-      {{ ticket.description }}
-    </p>
+    <div class="flex flex-col gap-2 w-3/4">
+      <UIButtonBase @click="returnToProblems" :icon="ChevronLeftIcon" class="w-fit">
+        Вернуться к списку проблем
+      </UIButtonBase>
+      <p class="text-light-gray">
+        {{ ticket.description || "Нет описания" }}
+      </p>
+    </div>
     <hr class="h-full border-transparent border-r border-r-border w-1.5" />
 
     <div class="w-full max-w-72 gap-4 flex flex-col">
