@@ -44,7 +44,7 @@ const handleDelete = async (id: string) => {
         <div class="inline-flex items-center gap-2">
           <TrashIcon
             class="size-4.5 text-gray opacity-0 group-hover:opacity-100 duration-300 transition-all hover:text-red cursor-pointer"
-            @click.stop="() => handleDelete(ticket.id)"
+            @click.prevent="() => handleDelete(ticket.id)"
           />
           <p class="text-gray">
             {{ new Date(ticket.date).toLocaleDateString("ru-Ru") }}
