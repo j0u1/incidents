@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronLeftIcon, PenIcon, TrashIcon, XIcon } from "@lucide/vue";
+import { ChevronLeftIcon, PenIcon, SaveIcon, TrashIcon, XIcon } from "@lucide/vue";
 import { projectName } from "~/data/project";
 
 const route = useRoute();
@@ -141,7 +141,7 @@ const returnToProblems = () => {
             placeholder="Описание проблемы"
             class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
           />
-          <UIButtonBase @click="handleEdit" :icon="PenIcon"> Сохранить </UIButtonBase>
+          <UIButtonBase @click="handleEdit" :icon="SaveIcon"> Сохранить </UIButtonBase>
           <UIButtonBase @click="handleDelete" :icon="TrashIcon"> Удалить </UIButtonBase>
         </div>
       </div>

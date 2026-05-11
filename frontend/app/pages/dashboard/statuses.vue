@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PenIcon, PlusIcon, TrashIcon, XIcon } from "@lucide/vue";
+import { PenIcon, PlusIcon, SaveIcon, TrashIcon, XIcon } from "@lucide/vue";
 
 definePageMeta({
   layout: "sidebar",
@@ -120,7 +120,7 @@ const handleDelete = async (id: string) => {
           <div class="flex gap-2 w-full">
             <UIButtonBase
               @click="handleSubmit"
-              :icon="isEditing ? PenIcon : PlusIcon"
+              :icon="isEditing ? SaveIcon : PlusIcon"
               class="w-full"
             >
               {{ isEditing ? "Сохранить" : "Создать" }}
