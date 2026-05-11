@@ -10,22 +10,22 @@
 >
 > ⚠️ Не весь функционал готов
 
-<img width="1424" height="635" alt="инциденты" src="https://github.com/user-attachments/assets/77e1daf4-301b-4dda-803d-57eb58acae5a" />
+<img alt="превью сайта" src="./frontend/public/images/preview.webp" />
 
 ---
 
-Стек: `Nuxt`, `TypeScript`, `Tailwind`, `Better Auth`, `Bun`, `Elysia`, `PostgreSQL`, `Oxc`
+Стек: `Nuxt`, `TypeScript`, `Tailwind`, `Better Auth`, `Bun`, `Elysia`, `PostgreSQL`, `Oxc`, `VueUse`
 
-![stack](https://skills.syvixor.com/api/icons?perline=15&i=nuxt,ts,tailwind,betterauth,bun,elysia,postgresql,oxc)
+![stack](https://skills.syvixor.com/api/icons?perline=15&i=nuxt,ts,tailwind,betterauth,bun,elysia,postgresql,oxc,vueuse)
 
 ---
 
 ## Фичи
 
 - Авторизация
-- Создание и отслеживание инцидентов
-- Маршрутизация обращений
-- Статистика по инцидентам
+- CRUD инцидентов (создание, просмотр, редактирование, удаление)
+- Маршрутизация проблем
+- Статистика по статусам
 
 ---
 
