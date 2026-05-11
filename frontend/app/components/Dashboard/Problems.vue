@@ -52,7 +52,12 @@ const handleDelete = async (id: string) => {
         </div>
       </NuxtLink>
     </div>
-    <p v-else class="text-light-gray w-full max-w-1/2">Все проблемы решены! Отличная работа!</p>
+    <div
+      v-else
+      class="w-full max-w-1/2 flex justify-center items-center border border-border rounded-lg p-4"
+    >
+      <p class="text-gray">Все проблемы решены! Отличная работа!</p>
+    </div>
   </Transition>
 </template>
 
