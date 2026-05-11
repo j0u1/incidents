@@ -13,7 +13,7 @@ const isMenuOpen = ref(false);
       <IconsLogosFull />
     </NuxtLink>
     <div class="flex items-center gap-4 min-h-11">
-      <NuxtLink to="//github.com/j0u1/yadro-frontend" target="_blank">
+      <NuxtLink to="https://github.com/j0u1/incidents" target="_blank">
         <IconsGitHub
           class="fill-gray hover:fill-light-gray duration-300 transition-all hover:scale-105 active:105 size-6"
         />
