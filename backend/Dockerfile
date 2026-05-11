@@ -3,15 +3,17 @@ FROM oven/bun AS build
 
 WORKDIR /app
 
-# Cache packages installation
 COPY package.json package.json
 COPY bun.lock bun.lock
 
 RUN bun install
 
+COPY ./prisma ./prisma
 COPY ./src ./src
 
 ENV NODE_ENV=production
+
+RUN bunx prisma generate 
 
 RUN bun build         --compile         --minify-whitespace         --minify-syntax         --outfile server         src/index.ts
 

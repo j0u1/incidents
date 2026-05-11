@@ -1,5 +1,5 @@
-import { auth } from "@/libs/auth";
-import { prisma } from "@/libs/prisma";
+import { auth } from "../libs/auth";
+import { prisma } from "../libs/prisma";
 import Elysia, { t } from "elysia";
 
 const bodyFunc = {
