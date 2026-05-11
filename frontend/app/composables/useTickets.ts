@@ -29,6 +29,10 @@ export function useTickets() {
     return tickets.value;
   };
 
+  const getTicketById = async (id: string) => {
+    return await api<Ticket>(`/api/tickets/${id}`);
+  };
+
   const deleteTicket = async (id: string) => {
     await api(`/api/tickets/${id}`, {
       method: "DELETE",
@@ -36,10 +40,24 @@ export function useTickets() {
     tickets.value = tickets.value.filter((t) => t.id !== id);
   };
 
+  const updateTicket = async (
+    id: string,
+    data: { title?: string; description?: string; statusId?: string },
+  ) => {
+    const ticket = await api(`/api/tickets/${id}`, {
+      method: "PATCH",
+      body: data,
+    });
+
+    return ticket;
+  };
+
   return {
     tickets,
     createTicket,
     getTickets,
     deleteTicket,
+    getTicketById,
+    updateTicket,
   };
 }

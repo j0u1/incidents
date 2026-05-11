@@ -95,7 +95,18 @@ export const tickets = new Elysia({ prefix: "/api/tickets" })
     async ({ params, body }) => {
       const ticket = await prisma.tickets.update({
         where: { id: params.id },
-        data: body,
+        data: {
+          title: body.title,
+          description: body.description,
+          ...(body.statusId && {
+            status: { connect: { id: body.statusId } },
+          }),
+        },
+        include: {
+          status: true,
+          category: true,
+          createdBy: { select: { id: true, name: true, email: true, image: true } },
+        },
       });
 
       return ticket;
@@ -104,6 +115,7 @@ export const tickets = new Elysia({ prefix: "/api/tickets" })
       body: t.Object({
         title: t.Optional(t.String()),
         description: t.Optional(t.String()),
+        statusId: t.Optional(t.String()),
       }),
     },
   )

@@ -23,7 +23,11 @@ const handleDelete = async (id: string) => {
       >
         <div class="flex gap-4 items-center w-full">
           <div class="flex items-center gap-3.5 w-fit">
-            <div class="h-4.5 w-1.25 rounded-lg" :class="`bg-${ticket.status?.color || 'gray'}`" />
+            <div
+              class="h-4.5 w-1.25 rounded-lg"
+              :class="`bg-${ticket.status?.color || 'gray'}`"
+              :style="{ backgroundColor: `var(--${ticket.status?.color || 'gray'})` }"
+            />
 
             <div class="flex items-center gap-2.5 w-fit">
               <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
