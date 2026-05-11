@@ -12,4 +12,4 @@ WORKDIR /app
 COPY --from=build /app /app
 ENV NODE_ENV=production
 EXPOSE 3000
-CMD ["sh", "-c", "bun src/index.ts && bun prisma:deploy"]
+CMD ["sh", "-c", "bun prisma:deploy && bun src/index.ts"]
