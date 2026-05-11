@@ -56,10 +56,7 @@ onClickOutside(dropDownRef, () => {
     </button>
 
     <div v-else class="relative flex items-center gap-2.5 w-full select-none">
-      <UIAvatar
-        :src="session.data.user.image ?? undefined"
-        class="aspect-square size-10"
-      />
+      <UIAvatar :src="session.data.user.image ?? undefined" class="aspect-square size-10" />
       <div v-if="!isCollapsed">
         <p>{{ session.data.user.name }}</p>
         <p class="text-sm text-light-gray">
@@ -68,21 +65,26 @@ onClickOutside(dropDownRef, () => {
       </div>
     </div>
     <div
-      class="absolute inset-x-0 border border-border rounded-lg flex flex-col items-center gap-2.5 duration-200 transition-all bg-secondary origin-bottom"
+      class="absolute inset-x-0 border border-border rounded-lg flex flex-col items-center gap-2.5 transition-all origin-bottom duration-180"
       :class="[
         !session.data ? 'opacity-0' : 'opacity-100',
-        padding,
+        !isCollapsed ? padding && 'bg-secondary' : 'border-0 bg-transparent -mb-2',
         dropDown ? 'bottom-19 scale-100' : 'bottom-16 scale-0',
       ]"
     >
       <button
         @click="signOut"
         type="button"
-        class="text-sm text-light-gray border border-border rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 transition-300 cursor-pointer"
-        :class="padding"
+        class="text-light-gray rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-red hover:text-red duratiom-300 cursor-pointer duration-300 transition-all"
+        :class="[padding, isCollapsed && 'bg-transparent']"
       >
-        <LogOutIcon class="size-4.5" />
-        Выйти
+        <LogOutIcon class="size-4.5 shrink-0" />
+        <span
+          class="duration-300 transition-all"
+          :class="isCollapsed ? 'w-0 text-[0px] opacity-0' : 'opacity-100 w-fit text-sm'"
+        >
+          Выйти
+        </span>
       </button>
     </div>
   </div>
