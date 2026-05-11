@@ -11,8 +11,8 @@ model Tickets {
   id          String       @id @default(cuid())
   number      Int          @unique @default(autoincrement())
   date        DateTime
-  title       String
-  description String?
+  title       String       @db.VarChar(32)
+  description String?      @db.VarChar(200)
   category    Categories[] @relation("tickets_categories")
   assigmentTo User?        @relation("assigment_to", fields: [assigmentId], references: [id])
   assigmentId String?      @map("assigment_id")
@@ -27,9 +27,9 @@ model Tickets {
 
 model Statuses {
   id          String    @id @default(cuid())
-  name        String
-  color       String
-  description String?
+  name        String    @db.VarChar(32)
+  color       String    @db.VarChar(16)
+  description String?   @db.VarChar(200)
   tickets     Tickets[]
 
   @@map("statuses")
@@ -37,7 +37,7 @@ model Statuses {
 
 model Categories {
   id      String    @id @default(cuid())
-  name    String
+  name    String    @db.VarChar(32)
   color   String
   tickets Tickets[] @relation("tickets_categories")
 
@@ -46,17 +46,17 @@ model Categories {
 
 model User {
   id              String    @id
-  name            String
+  name            String    @db.VarChar(42)
   email           String    @unique
   emailVerified   Boolean   @default(false)
   image           String?
-  isAdmin         Boolean   @default(false) // ← из Users
+  isAdmin         Boolean   @default(false)
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
   sessions        Session[]
   accounts        Account[]
-  ticketsAssigned Tickets[] @relation("assigment_to") // ← из Users
-  ticketsCreated  Tickets[] @relation("created_by") // ← из Users
+  ticketsAssigned Tickets[] @relation("assigment_to")
+  ticketsCreated  Tickets[] @relation("created_by")
 
   @@map("user")
 }
