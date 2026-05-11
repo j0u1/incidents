@@ -66,7 +66,7 @@ const classes = computed(() => {
 }
 
 .btn {
-  @apply bg-bg cursor-pointer text-light-gray items-center flex gap-2.5 transition-all duration-300 outline outline-transparent;
+  @apply bg-bg cursor-pointer text-light-gray fill-light-gray items-center flex gap-2.5 transition-all duration-300 outline outline-transparent hover:fill-primary;
 }
 
 .btn-primary {
