@@ -19,7 +19,7 @@ const handleDelete = async (id: string) => {
         v-for="ticket in tickets"
         :key="ticket.id"
         :to="`/dashboard/problems/${ticket.id}`"
-        class="relative flex justify-between border border-border rounded-lg group p-4"
+        class="relative flex justify-between border border-border rounded-lg group p-4 gap-4"
       >
         <div class="flex gap-4 items-center w-full">
           <div class="flex items-center gap-3.5 w-fit">
