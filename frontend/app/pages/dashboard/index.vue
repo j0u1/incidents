@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { projectName } from "~/data/project.ts";
+import { projectName } from "~/data/project";
 
 definePageMeta({
   layout: "sidebar",
