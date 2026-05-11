@@ -1,5 +1,5 @@
 {
-  "name": "kazus-frontend",
+  "name": "incidents-frontend",
   "type": "module",
   "private": true,
   "scripts": {

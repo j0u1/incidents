@@ -1,5 +1,5 @@
 {
-  "name": "taskswap-backend",
+  "name": "incidents-backend",
   "version": "1.0.50",
   "module": "src/index.js",
   "scripts": {
