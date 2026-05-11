@@ -40,10 +40,10 @@ const handleDelete = async (id: string) => {
           {{ ticketCountByStatus[ps.name] ?? 0 }}
         </p>
       </div>
-      <span class="text-light-gray">{{ ps.name }}</span>
-      <span class="text-sm text-gray">
+      <div class="text-light-gray">{{ ps.name }}</div>
+      <div class="text-sm text-gray">
         {{ ps.description || "Нет описания" }}
-      </span>
+      </div>
     </div>
   </div>
 </template>
