@@ -14,7 +14,7 @@ const handleDelete = async (id: string) => {
 
 <template>
   <Transition name="problems" mode="out-in">
-    <div v-if="tickets.length > 0" class="flex flex-col gap-2.5 min-w-1/2">
+    <div v-if="tickets.length > 0" class="flex flex-col gap-2.5 w-full max-w-1/2">
       <NuxtLink
         v-for="ticket in tickets"
         :key="ticket.id"
@@ -52,7 +52,7 @@ const handleDelete = async (id: string) => {
         </div>
       </NuxtLink>
     </div>
-    <p v-else class="text-light-gray min-w-1/2">Все проблемы решены! Отличная работа!</p>
+    <p v-else class="text-light-gray w-full max-w-1/2">Все проблемы решены! Отличная работа!</p>
   </Transition>
 </template>
 

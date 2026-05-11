@@ -20,7 +20,7 @@ const ticketCountByStatus = computed(() => {
 </script>
 
 <template>
-  <UICard class="min-h-67 min-w-1/2" title="Статистика по статусам">
+  <UICard class="min-h-67 w-full max-w-1/2" title="Статистика по статусам">
     <div class="flex flex-col gap-4">
       <div
         v-for="st in statuses"
