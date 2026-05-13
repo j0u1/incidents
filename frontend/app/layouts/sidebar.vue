@@ -11,7 +11,7 @@ const isCollapsed = computed(() => !isOpen.value);
 
 <template>
   <div class="flex">
-    <UISidebar class="hidden lg:flex" />
+    <UISidebar class="flex" />
 
     <div
       class="flex flex-col gap-5 w-full duration-200 transition-all"
