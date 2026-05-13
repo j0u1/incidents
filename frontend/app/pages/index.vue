@@ -27,7 +27,7 @@ const session = authClient.useSession();
       Перейти в Обзор
     </UIButtonBase>
     <NuxtImg
-      class="max-w-11/12 mx-auto rounded-2xl outline outline-border w-full"
+      class="max-w-11/12 mx-auto rounded-t-2xl outline outline-border w-full"
       src="/images/preview.webp"
     />
   </main>
