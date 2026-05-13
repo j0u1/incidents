@@ -2,6 +2,7 @@
 import { LogInIcon, LogOutIcon, ChevronLeftIcon, SettingsIcon } from "@lucide/vue";
 import { onClickOutside } from "@vueuse/core";
 import { useAuth } from "~/composables/useAuthClient";
+import { features } from "~/config/features";
 import { padding } from "~/data/dynamicStyles";
 
 const { isOpen } = useSidebar();
@@ -88,6 +89,7 @@ onClickOutside(dropDownRef, () => {
       </button>
 
       <NuxtLink
+        v-if="features.settings"
         to="/settings"
         class="text-light-gray rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-primary hover:text-primary duratiom-300 cursor-pointer duration-300 transition-all"
         :class="[padding, isCollapsed && 'bg-transparent']"
