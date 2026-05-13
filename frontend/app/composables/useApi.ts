@@ -1,8 +1,8 @@
 export function useApi() {
-  const config = useRuntimeConfig()
+  const config = useRuntimeConfig();
 
   return $fetch.create({
     baseURL: config.public.authBaseURL,
-    credentials: "include"
-  })
+    credentials: "include",
+  });
 }

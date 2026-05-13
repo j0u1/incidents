@@ -31,7 +31,10 @@ const props = withDefaults(
     :muted="props?.muted"
     :class="position === 'center' && 'w-full'"
   >
-    <span class="duration-300 transition-all origin-left" :class="noText ? '-ml-2 opacity-0 w-0' : 'opacity-100 w-fit'">
+    <span
+      class="duration-300 transition-all origin-left"
+      :class="noText ? '-ml-2 opacity-0 w-0' : 'opacity-100 w-fit'"
+    >
       {{ page.title }}
     </span>
   </UIButtonBase>

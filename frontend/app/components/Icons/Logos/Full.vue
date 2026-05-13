@@ -26,7 +26,10 @@ const logoSize = computed(() => {
     :class="centered ? 'ml-1.25 gap-0' : 'gap-2.5'"
   >
     <Mini :style="{ width: logoSize, height: logoSize }" />
-    <div class="duration-280 transition-all origin-left" :class="centered ? 'scale-0 opacity-0 w-0' : 'scale-100 opacity-100'">
+    <div
+      class="duration-280 transition-all origin-left"
+      :class="centered ? 'scale-0 opacity-0 w-0' : 'scale-100 opacity-100'"
+    >
       <span>{{ projectName }}</span>
       <span class="sr-only">{{ projectName }}</span>
     </div>

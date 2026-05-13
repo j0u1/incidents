@@ -1,11 +1,6 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": [
-    "**/dist/",
-    "**/node_modules/",
-    "**/.nuxt/",
-    "**/.output/"
-  ],
+  "ignorePatterns": ["**/dist/", "**/node_modules/", "**/.nuxt/", "**/.output/"],
   "singleQuote": false,
   "trailingComma": "all"
 }

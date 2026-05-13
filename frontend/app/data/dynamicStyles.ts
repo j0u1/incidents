@@ -1,1 +1,1 @@
-export const padding = 'px-3 py-2.25'
+export const padding = "px-3 py-2.25";
