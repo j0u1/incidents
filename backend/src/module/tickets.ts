@@ -18,7 +18,9 @@ export const tickets = new Elysia({ prefix: "/api/tickets" })
           description: body.description,
           date: new Date(),
           createdById: section.user.id,
-          statusId: body.statusId,
+          statusId:
+            body.statusId ??
+            (await prisma.settings.findUnique({ where: { id: "global" } }))?.defaultStatusId,
         },
       });
 

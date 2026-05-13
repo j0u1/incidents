@@ -26,11 +26,12 @@ model Tickets {
 }
 
 model Statuses {
-  id          String    @id @default(cuid())
-  name        String    @db.VarChar(32)
-  color       String    @db.VarChar(16)
-  description String?   @db.VarChar(200)
+  id          String     @id @default(cuid())
+  name        String     @db.VarChar(32)
+  color       String     @db.VarChar(16)
+  description String?    @db.VarChar(200)
   tickets     Tickets[]
+  settings    Settings[]
 
   @@map("statuses")
 }
@@ -107,4 +108,12 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+model Settings {
+  id              String    @id @default("global")
+  defaultStatus   Statuses? @relation(fields: [defaultStatusId], references: [id])
+  defaultStatusId String?   @map("default_status_id")
+
+  @@map("settings")
 }

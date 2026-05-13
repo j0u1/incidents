@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LogInIcon, LogOutIcon, ChevronLeftIcon } from "@lucide/vue";
+import { LogInIcon, LogOutIcon, ChevronLeftIcon, SettingsIcon } from "@lucide/vue";
 import { onClickOutside } from "@vueuse/core";
 import { useAuth } from "~/composables/useAuthClient";
 import { padding } from "~/data/dynamicStyles";
@@ -65,10 +65,10 @@ onClickOutside(dropDownRef, () => {
       </div>
     </div>
     <div
-      class="absolute inset-x-0 border border-border rounded-lg flex flex-col items-center gap-2.5 transition-all origin-bottom duration-180"
+      class="absolute inset-x-0 border border-border rounded-lg flex flex-col items-center gap-2 transition-all origin-bottom duration-180"
       :class="[
         !session.data ? 'opacity-0' : 'opacity-100',
-        !isCollapsed ? padding && 'bg-secondary' : 'border-0 bg-transparent -mb-2',
+        !isCollapsed ? padding && 'bg-secondary p-1.5' : 'border-0 bg-transparent -mb-2',
         dropDown ? 'bottom-19 scale-100' : 'bottom-16 scale-0',
       ]"
     >
@@ -86,6 +86,20 @@ onClickOutside(dropDownRef, () => {
           Выйти
         </span>
       </button>
+
+      <NuxtLink
+        to="/settings"
+        class="text-light-gray rounded-lg flex items-center gap-1.5 w-full bg-bg hover:border-primary hover:text-primary duratiom-300 cursor-pointer duration-300 transition-all"
+        :class="[padding, isCollapsed && 'bg-transparent']"
+      >
+        <SettingsIcon class="size-4.5 shrink-0" />
+        <span
+          class="duration-300 transition-all"
+          :class="isCollapsed ? 'w-0 text-[0px] opacity-0' : 'opacity-100 w-fit text-sm'"
+        >
+          Настройки
+        </span>
+      </NuxtLink>
     </div>
   </div>
 </template>
