@@ -4,9 +4,9 @@ const _features = {
   users: false,
   settings: false,
   statuses: true, // от статусов зависит статистика по статусам
-} as const;
+};
 
 export const features = {
   ..._features,
-  stats: _features.statuses,
-} as const;
+  stats: _features.statuses, 
+}
