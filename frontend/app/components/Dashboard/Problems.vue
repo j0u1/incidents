@@ -42,11 +42,11 @@ defineProps<{
               <p class="whitespace-nowrap text-gray min-w-19">
                 {{ ticket.number ? "INC-" + ticket.number : "Нет номера" }}
               </p>
+              <p class="text-light-gray flex-1 min-w-0 truncate">
+                {{ ticket?.title || "Нет названия" }}
+              </p>
             </div>
           </div>
-          <p class="text-light-gray flex-1 min-w-0 truncate">
-            {{ ticket?.title || "Нет названия" }}
-          </p>
         </div>
 
         <div class="inline-flex items-center gap-2">
