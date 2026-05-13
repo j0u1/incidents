@@ -40,7 +40,7 @@ defineProps<{
             <div class="flex items-center gap-2.5 w-fit">
               <UIAvatar class="size-6.5" :src="ticket.createdBy?.image ?? undefined" />
               <p class="whitespace-nowrap text-gray min-w-19">
-                {{ ticket.number ? "ИНЦ-" + ticket.number : "Нет номера" }}
+                {{ ticket.number ? "INC-" + ticket.number : "Нет номера" }}
               </p>
             </div>
           </div>

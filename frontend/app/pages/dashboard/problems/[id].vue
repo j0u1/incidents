@@ -14,9 +14,9 @@ definePageMeta({
 });
 
 const ticket = ref(await getTicketById(id as string));
-route.meta.pageTitle = `ИНЦ-${ticket.value.number}: ${ticket.value.title}`;
+route.meta.pageTitle = `INC-${ticket.value.number}: ${ticket.value.title}`;
 
-const seoTitle = `ИНЦ-${ticket.value.number}: ${ticket.value.title} — ` + projectName;
+const seoTitle = `INC-${ticket.value.number}: ${ticket.value.title} — ` + projectName;
 const seoDescription =
   "Раздел " +
   projectName +
