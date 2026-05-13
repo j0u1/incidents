@@ -18,9 +18,13 @@ defineProps<{
 
 <template>
   <Transition name="problems" mode="out-in">
-    <div v-if="tickets.length > 0" class="flex flex-col gap-2.5 w-full" :class="isShort && 'max-w-1/2'">
+    <div
+      v-if="tickets.length > 0"
+      class="flex flex-col gap-2.5 w-full"
+      :class="isShort && 'max-w-1/2'"
+    >
       <NuxtLink
-        v-for="ticket in (isShort ? tickets.slice(0, 5) : tickets)"
+        v-for="ticket in isShort ? tickets.slice(0, 5) : tickets"
         :key="ticket.id"
         :to="`/dashboard/problems/${ticket.id}`"
         class="relative flex justify-between border border-border rounded-lg group p-4 gap-4"
@@ -58,7 +62,8 @@ defineProps<{
     </div>
     <div
       v-else
-      class="w-full max-w-1/2 flex justify-center items-center border border-border rounded-lg p-4"
+      class="w-full flex justify-center items-center p-4"
+      :class="isShort && 'max-w-1/2 border border-border rounded-lg'"
     >
       <p class="text-gray">Все проблемы решены! Отличная работа!</p>
     </div>
