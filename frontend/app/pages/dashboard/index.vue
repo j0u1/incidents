@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { features } from "~/config/features";
 import { projectName } from "~/data/project";
 
 definePageMeta({
@@ -36,6 +37,6 @@ useHead({
 </script>
 
 <template>
-  <DashboardStats />
+  <DashboardStatuses v-if="features.statuses" />
   <DashboardOverview />
 </template>

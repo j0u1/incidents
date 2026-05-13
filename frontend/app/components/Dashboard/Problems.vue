@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { TrashIcon } from "@lucide/vue";
+import { features } from "~/config/features";
 
 const { tickets, deleteTicket, getTickets } = useTickets();
 await getTickets();
@@ -32,6 +33,7 @@ defineProps<{
         <div class="flex gap-4 items-center w-full">
           <div class="flex items-center gap-3.5 w-fit">
             <div
+            v-if="features.statuses"
               class="h-4.5 w-1.25 rounded-lg"
               :class="`bg-${ticket.status?.color || 'gray'}`"
               :style="{ backgroundColor: `var(--${ticket.status?.color || 'gray'})` }"

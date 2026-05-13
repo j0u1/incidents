@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ChevronLeftIcon, PenIcon, SaveIcon, TrashIcon, XIcon } from "@lucide/vue";
+import { features } from "~/config/features";
 import { projectName } from "~/data/project";
 
 const route = useRoute();
@@ -94,7 +95,7 @@ const returnToProblems = () => {
 
     <div class="w-full max-w-72 gap-4 flex flex-col">
       <div>
-        <p>
+        <p v-if="features.statuses">
           Статус: <span class="text-gray">{{ ticket.status?.name || "Нет статуса" }}</span>
         </p>
         <p>

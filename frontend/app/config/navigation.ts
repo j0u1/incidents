@@ -29,6 +29,7 @@ const navigation: NavigationItem[] = [
     title: "Статусы",
     path: `${pagesDashboardPath}/statuses`,
     icon: CircleDotIcon,
+    feature: "statuses"
   },
 ];
 export const visibleNavigation = navigation.filter(
