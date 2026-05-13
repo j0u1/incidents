@@ -62,26 +62,26 @@ const handleDelete = async (id: string) => {
 
 <template>
   <div class="grid grid-cols-3 gap-4">
-    <div @click="openEdit(status)" v-for="status in statuses" :key="status.id" class="status group">
-      <div class="flex items-center gap-2">
-        <div :style="{ backgroundColor: `var(--${status.color})` }" class="icon rounded-full" />
-        {{ status.name }}
-      </div>
+    <UIButtonBase
+      click="openEdit(status)"
+      v-for="status in statuses"
+      :key="status.id"
+      position="left"
+      variant="filled"
+      class="group relative"
+    >
+      <div :style="{ backgroundColor: `var(--${status.color})` }" class="icon rounded-full" />
+      {{ status.name }}
+
       <div
-        class="flex items-center gap-2 opacity-0 group-hover:opacity-100 duration-300 transition-all text-light-gray"
+        class="absolute right-3.5 flex items-center gap-2 opacity-0 group-hover:opacity-100 duration-300 transition-all text-light-gray"
       >
         <PenIcon class="icon hover:text-primary" @click="openEdit(status)" />
         <TrashIcon class="icon hover:text-red" @click.stop="handleDelete(status.id)" />
       </div>
-    </div>
+    </UIButtonBase>
 
-    <!-- Создание статуса -->
-    <div @click="openCreate" class="status">
-      <div class="flex items-center gap-2">
-        <PlusIcon class="icon" />
-        Создать статус
-      </div>
-    </div>
+    <UIButtonBase @click="openCreate" :icon="PlusIcon" position="left"> Создать </UIButtonBase>
   </div>
 
   <Transition name="modal">
@@ -146,8 +146,8 @@ const handleDelete = async (id: string) => {
 .status {
   @apply flex items-center gap-2 p-4 rounded-lg bg-secondary border border-border text-light-gray cursor-pointer hover:border-primary transition-all duration-300 hover:text-primary justify-between;
 }
-.status .icon {
-  @apply size-4 aspect-square;
+.icon {
+  @apply size-4.5 aspect-square;
 }
 
 .modal-enter-active,
