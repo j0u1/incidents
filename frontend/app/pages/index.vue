@@ -11,7 +11,7 @@ const session = authClient.useSession();
     class="flex flex-col gap-16 items-center max-h-[87.5dvh] overflow-hidden border-b border-border"
   >
     <h1 class="text-6xl font-medium flex flex-col gap-2 text-center pt-18">
-      <span>Проблемы случаются,</span>
+      <span>Инциденты случаются,</span>
       <span class="text-primary">Вы решите их быстрее</span>
     </h1>
     <UIButtonBase

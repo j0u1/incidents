@@ -21,7 +21,7 @@ const seoTitle = `INC-${ticket.value.number}: ${ticket.value.title} — ` + proj
 const seoDescription =
   "Раздел " +
   projectName +
-  " с актуальными проблемами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
+  " с актуальными инцидентами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
 
 useSeoMeta({
   title: seoTitle,
@@ -85,7 +85,7 @@ const returnToProblems = () => {
   <div class="flex gap-4 h-full">
     <div class="flex flex-col gap-2 w-3/4">
       <UIButtonBase @click="returnToProblems" :icon="ChevronLeftIcon" class="w-fit">
-        Вернуться к списку проблем
+        Вернуться к списку инцидентов
       </UIButtonBase>
       <p class="text-light-gray">
         {{ ticket.description || "Нет описания" }}
@@ -121,12 +121,12 @@ const returnToProblems = () => {
       <XIcon class="absolute top-5 right-5 cursor-pointer" @click="openModal = false" />
 
       <div class="border border-border bg-secondary rounded-2xl p-4">
-        <h3 class="text-2xl font-medium mb-4">Редактировать проблему</h3>
+        <h3 class="text-2xl font-medium mb-4">Редактировать инцидент</h3>
         <div class="flex flex-col gap-4">
           <input
             v-model="form.title"
             type="text"
-            placeholder="Название проблемы"
+            placeholder="Название инцидента"
             class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <select
@@ -139,7 +139,7 @@ const returnToProblems = () => {
           </select>
           <textarea
             v-model="form.description"
-            placeholder="Описание проблемы"
+            placeholder="Описание инцидента"
             class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <UIButtonBase @click="handleEdit" :icon="SaveIcon"> Сохранить </UIButtonBase>

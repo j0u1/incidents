@@ -72,7 +72,7 @@ useHead({
             >
               d.ivanov@example.com
             </NuxtLink>
-            <p class="text-gray text-sm h-4.5">Решает текущие проблемы</p>
+            <p class="text-gray text-sm h-4.5">Решает текущие инциденты</p>
           </div>
         </div>
         <div class="flex flex-col items-end">

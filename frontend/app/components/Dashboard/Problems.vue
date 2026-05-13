@@ -67,7 +67,7 @@ defineProps<{
       class="w-full flex justify-center items-center p-4"
       :class="isShort && 'max-w-1/2 border border-border rounded-lg'"
     >
-      <p class="text-gray">Все проблемы решены! Отличная работа!</p>
+      <p class="text-gray">Все инциденты решены! Отличная работа!</p>
     </div>
   </Transition>
 </template>

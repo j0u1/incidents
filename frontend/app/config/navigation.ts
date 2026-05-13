@@ -13,7 +13,7 @@ const pagesDashboardPath = "/dashboard";
 const navigation: NavigationItem[] = [
   { title: "Обзор", path: pagesDashboardPath, icon: Layout, exact: true },
   {
-    title: "Проблемы",
+    title: "Инциденты",
     path: `${pagesDashboardPath}/problems`,
     icon: TriangleAlert,
     feature: "problems",

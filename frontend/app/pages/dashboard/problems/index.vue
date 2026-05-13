@@ -4,14 +4,14 @@ import { projectName } from "~/data/project";
 
 definePageMeta({
   layout: "sidebar",
-  pageTitle: "Проблемы",
+  pageTitle: "Инциденты",
 });
 
-const seoTitle = "Проблемы — " + projectName;
+const seoTitle = "Инциденты — " + projectName;
 const seoDescription =
   "Раздел " +
   projectName +
-  " с актуальными проблемами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
+  " с актуальными инцидентами, статусами, приоритетами и последними инцидентами для быстрой работы команды.";
 
 useSeoMeta({
   title: seoTitle,

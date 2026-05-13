@@ -26,7 +26,7 @@ useSeoMeta({
   robots: "noindex, nofollow, noarchive",
   keywords:
     projectName +
-    ", dashboard, обзор, проблемы, инциденты, решения, задачи, мониторинг, Настройки, настройки",
+    ", dashboard, обзор, инцидентов, инциденты, решения, задачи, мониторинг, Настройки, настройки",
 });
 
 const form = reactive({

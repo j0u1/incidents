@@ -36,7 +36,7 @@ withDefaults(
   <div class="flex items-end justify-between px-5 max-h-fit mt-5">
     <h1 class="text-3xl font-medium">{{ title }}</h1>
     <UIButtonBase :icon="PlusIcon" @click="openModal = !openModal">
-      Добавить проблему
+      Добавить инцидент
     </UIButtonBase>
   </div>
   <Transition name="modal">
@@ -47,17 +47,17 @@ withDefaults(
       <XIcon class="absolute top-5 right-5 cursor-pointer" @click="openModal = false" />
 
       <div class="border border-border bg-secondary rounded-2xl p-4">
-        <h3 class="text-2xl font-medium mb-4">Новая проблема</h3>
+        <h3 class="text-2xl font-medium mb-4">Новый инцидент</h3>
         <div class="flex flex-col gap-4">
           <input
             v-model="form.title"
             type="text"
-            placeholder="Название проблемы"
+            placeholder="Название инцидента"
             class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <textarea
             v-model="form.description"
-            placeholder="Описание проблемы"
+            placeholder="Описание инцидента"
             class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <UIButtonBase @click="handleCreate" :icon="PlusIcon"> Создать </UIButtonBase>
