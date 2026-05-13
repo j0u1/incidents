@@ -25,7 +25,7 @@ onClickOutside(dropDownRef, () => {
         </NuxtLink>
         <button
           @click="clickCollapsed"
-          class="absolute -right-3 top-1/2 -translate-y-1/2 bg-bg border border-border rounded-full p-1.5 hover:bg-secondary duration-300 transition-all cursor-pointer"
+          class="absolute -right-4 top-1/2 -translate-y-1/2 bg-bg border border-border rounded-full p-1.5 hover:bg-secondary duration-300 transition-all cursor-pointer"
         >
           <ChevronLeftIcon
             class="size-4.5 text-gray duration-300 transition-all"
