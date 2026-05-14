@@ -5,8 +5,8 @@ import { useAuth } from "~/composables/useAuthClient";
 import { features } from "~/config/features";
 import { padding } from "~/data/dynamicStyles";
 
-const { isOpen } = useSidebar();
-const isCollapsed = computed(() => !isOpen.value);
+const sidebar = useSidebarStore();
+const isCollapsed = computed(() => !sidebar.isOpen);
 const dropDownRef = ref(null);
 const dropDown = ref(false);
 const authClient = useAuth();

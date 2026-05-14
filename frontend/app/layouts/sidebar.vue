@@ -5,8 +5,8 @@ const pageTitle = computed(() => {
   return typeof route.meta.pageTitle === "string" ? route.meta.pageTitle : "Обзор";
 });
 
-const { isOpen } = useSidebar();
-const isCollapsed = computed(() => !isOpen.value);
+const sidebar = useSidebarStore();
+const isCollapsed = computed(() => !sidebar.isOpen);
 </script>
 
 <template>

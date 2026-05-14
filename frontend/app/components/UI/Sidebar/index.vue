@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { onClickOutside } from "@vueuse/core";
 
-const { isOpen, toggle } = useSidebar();
-const isCollapsed = computed(() => !isOpen.value);
-const clickCollapsed = toggle;
+const sidebar = useSidebarStore();
+const isCollapsed = computed(() => !sidebar.isOpen);
+const clickCollapsed = sidebar.toggle;
 const dropDownRef = ref(null);
 const dropDown = ref(false);
 

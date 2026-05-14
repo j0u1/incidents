@@ -1,4 +1,4 @@
-export function useSidebar() {
+export const useSidebarStore = defineStore("sidebar", () => {
   const isOpen = useCookie<boolean>("sidebar-open", {
     default: () => true,
   });
@@ -8,4 +8,4 @@ export function useSidebar() {
   };
 
   return { isOpen, toggle };
-}
+});

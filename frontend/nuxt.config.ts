@@ -17,6 +17,8 @@ export default defineNuxtConfig({
         "@lucide/vue",
         "better-auth/vue",
         "@vueuse/core",
+        "tailwind-merge",
+        "clsx",
       ],
     },
   },
