@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   experimental: {
     serverAppConfig: false,
   },
-  modules: ["@nuxt/image"],
+  modules: ["@nuxt/image", "@pinia/nuxt"],
   css: ["./app/assets/css/main.css"],
   vite: {
     plugins: [tailwindcss()],
