@@ -52,5 +52,5 @@ label {
 }
 
 #__nuxt {
-  @apply space-y-8;
+  @apply grid gap-8;
 }
