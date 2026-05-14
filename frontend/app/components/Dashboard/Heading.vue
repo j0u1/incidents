@@ -9,7 +9,7 @@ const createTicket = useTickets().createTicket;
 const form = reactive({
   title: "",
   description: "",
-  statusId: statuses.value[0]?.id ?? "",
+  status: statuses.value[0]?.id ?? "",
 });
 
 const handleCreate = async () => {
@@ -18,7 +18,7 @@ const handleCreate = async () => {
     return;
   }
 
-  await createTicket(form.title, form.description, form.statusId);
+  await createTicket(form.title, form.description, form.status);
   openModal.value = false;
 };
 
@@ -55,6 +55,17 @@ withDefaults(
             placeholder="Название инцидента"
             class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
           />
+          <div class="grid gap-2">
+            <UIInputLabel label="Статус критичности" />
+            <select
+              v-model="form.status"
+              class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <option v-for="status in statuses" :key="status.id" :value="status.id">
+                {{ status.name }}
+              </option>
+            </select>
+          </div>
           <textarea
             v-model="form.description"
             placeholder="Описание инцидента"
