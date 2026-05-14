@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import { CheckIcon, Clock10Icon, TrashIcon, TriangleAlertIcon } from "@lucide/vue";
+const ticket = useTicketsStore();
 
-const { tickets, getTickets } = useTickets();
-await getTickets();
-
-const { statuses, getStatuses, deleteStatus } = useStatuses();
+const { statuses, getStatuses } = useStatuses();
 await getStatuses();
 
 const ticketCountByStatus = computed(() => {
   const counts: Record<string, number> = {};
-  for (const ticket of tickets.value) {
-    const status = statuses.value.find((s) => s.id === ticket.status?.id);
+  for (const tk of ticket.tickets) {
+    const status = statuses.value.find((s) => s.id === tk.status?.id);
     if (status) {
       counts[status.name] = (counts[status.name] || 0) + 1;
     }

@@ -5,7 +5,7 @@ await getStatuses();
 
 const openModal = ref(false);
 const error = ref("");
-const createTicket = useTickets().createTicket;
+const ticket = useTicketsStore()
 const form = reactive({
   title: "",
   description: "",
@@ -18,7 +18,7 @@ const handleCreate = async () => {
     return;
   }
 
-  await createTicket(form.title, form.description, form.status);
+  await ticket.createTicket(form.title, form.description, form.status);
   openModal.value = false;
 };
 

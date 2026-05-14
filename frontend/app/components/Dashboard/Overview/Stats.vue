@@ -2,15 +2,14 @@
 import { getPercent } from "~/data/categoriesStats";
 
 const { statuses, getStatuses } = useStatuses();
-const { tickets, getTickets } = useTickets();
+const ticket = useTicketsStore();
 
 await getStatuses();
-await getTickets();
 
 const ticketCountByStatus = computed(() => {
   const counts: Record<string, number> = {};
-  for (const ticket of tickets.value) {
-    const status = statuses.value.find((s) => s.id === ticket.status?.id);
+  for (const tk of ticket.tickets) {
+    const status = statuses.value.find((s) => s.id === tk.status?.id);
     if (status) {
       counts[status.name] = (counts[status.name] || 0) + 1;
     }

@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const route = useRoute();
+const ticket = useTicketsStore();
+
+await ticket.getTickets();
 </script>
 
 <template>

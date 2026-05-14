@@ -7,17 +7,17 @@ const route = useRoute();
 const { id } = route.params;
 const { statuses, getStatuses } = useStatuses();
 await getStatuses();
-const { getTicketById, deleteTicket, updateTicket } = useTickets();
+const ticket = useTicketsStore();
 
 definePageMeta({
   layout: "sidebar",
   pageTitle: "Загрузка...",
 });
 
-const ticket = ref(await getTicketById(id as string));
-route.meta.pageTitle = `INC-${ticket.value.number}: ${ticket.value.title}`;
+const tk = ref(await ticket.getTicketById(id as string));
+route.meta.pageTitle = `INC-${tk.value.number}: ${tk.value.title}`;
 
-const seoTitle = `INC-${ticket.value.number}: ${ticket.value.title} — ` + projectName;
+const seoTitle = `INC-${tk.value.number}: ${tk.value.title} — ` + projectName;
 const seoDescription =
   "Раздел " +
   projectName +
@@ -41,7 +41,7 @@ useSeoMeta({
 });
 
 const handleDelete = async () => {
-  await deleteTicket(id as string);
+  await ticket.deleteTicket(id as string);
   navigateTo("/dashboard/problems");
 };
 
@@ -55,9 +55,9 @@ const form = reactive({
 
 watch(openModal, (val) => {
   if (val) {
-    form.title = ticket.value.title;
-    form.description = ticket.value.description || "";
-    form.status = ticket.value.status?.id || statuses.value[0]?.id || "";
+    form.title = tk.value.title;
+    form.description = tk.value.description || "";
+    form.status = tk.value.status?.id || statuses.value[0]?.id || "";
   }
 });
 
@@ -67,12 +67,12 @@ const handleEdit = async () => {
     return;
   }
 
-  await updateTicket(id as string, {
+  await ticket.updateTicket(id as string, {
     title: form.title,
     description: form.description,
     statusId: form.status,
   });
-  ticket.value = await getTicketById(id as string);
+  tk.value = await ticket.getTicketById(id as string);
   openModal.value = false;
 };
 
@@ -88,7 +88,7 @@ const returnToProblems = () => {
         Вернуться к списку инцидентов
       </UIButtonBase>
       <p class="text-light-gray">
-        {{ ticket.description || "Нет описания" }}
+        {{ tk.description || "Нет описания" }}
       </p>
     </div>
     <hr class="h-full border-transparent border-r border-r-border w-1.5" />
@@ -96,10 +96,10 @@ const returnToProblems = () => {
     <div class="w-full max-w-72 gap-4 flex flex-col">
       <div>
         <p v-if="features.statuses">
-          Статус: <span class="text-gray">{{ ticket.status?.name || "Нет статуса" }}</span>
+          Статус: <span class="text-gray">{{ tk.status?.name || "Нет статуса" }}</span>
         </p>
         <p>
-          Создал: <span class="text-gray">{{ ticket.createdBy?.name || "Нет создателя" }}</span>
+          Создал: <span class="text-gray">{{ tk.createdBy?.name || "Нет создателя" }}</span>
         </p>
       </div>
       <div class="flex flex-col gap-2">
