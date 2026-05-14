@@ -14,9 +14,9 @@
 
 ---
 
-Стек: `Nuxt`, `TypeScript`, `Tailwind`, `Better Auth`, `Bun`, `Elysia`, `PostgreSQL`, `Oxc`, `VueUse`
+Стек: `Nuxt`, `TypeScript`, `Tailwind`, `Better Auth`, `Bun`, `Elysia`, `PostgreSQL`, `Oxc`, `VueUse`, `Pinia`
 
-![stack](https://skills.syvixor.com/api/icons?perline=15&i=nuxt,ts,tailwind,betterauth,bun,elysia,postgresql,oxc,vueuse)
+![stack](https://skills.syvixor.com/api/icons?perline=15&i=nuxt,ts,tailwind,betterauth,bun,elysia,postgresql,oxc,vueuse,pinia)
 
 ---
 
