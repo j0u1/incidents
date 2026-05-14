@@ -1,11 +1,5 @@
-interface Settings {
-  defaultStatusId: string | null;
-  defaultStatus: {
-    id: string;
-    name: string;
-    color: string;
-  } | null;
-}
+import type { Settings } from "~/types/Settings";
+
 
 export function useSettings() {
   const api = useApi();

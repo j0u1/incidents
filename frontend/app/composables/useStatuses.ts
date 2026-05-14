@@ -1,10 +1,5 @@
-interface Status {
-  id: string;
-  name: string;
-  color: string;
-  ticketsId: null;
-  description: string;
-}
+import type { Status } from "~/types/Status";
+
 
 const statuses = ref<Status[]>([]);
 
