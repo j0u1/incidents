@@ -49,7 +49,6 @@ const form = reactive({
           :value="status.id"
           class="flex items-center gap-2"
         >
-          <div class="size-4 rounded-full shrink-0" :style="{ backgroundColor: status.color }" />
           {{ status.name }}
         </option>
       </select>
