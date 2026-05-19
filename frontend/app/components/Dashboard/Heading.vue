@@ -5,7 +5,7 @@ await getStatuses();
 
 const openModal = ref(false);
 const error = ref("");
-const ticket = useTicketsStore()
+const ticket = useTicketsStore();
 const form = reactive({
   title: "",
   description: "",
