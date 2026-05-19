@@ -1,6 +1,5 @@
 import type { Status } from "~/types/Status";
 
-
 const statuses = ref<Status[]>([]);
 
 export function useStatuses() {

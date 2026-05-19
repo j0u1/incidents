@@ -1,6 +1,5 @@
 import type { Settings } from "~/types/Settings";
 
-
 export function useSettings() {
   const api = useApi();
 
