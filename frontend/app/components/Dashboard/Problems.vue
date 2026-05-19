@@ -35,7 +35,9 @@ defineProps<{
               v-if="features.statuses"
               class="h-4.5 w-1.25 rounded-lg"
               :class="`bg-${tk.status?.color || 'gray'}`"
-              :style="{ backgroundColor: `var(--${tk.status?.color || 'gray'})` }"
+              :style="{
+                backgroundColor: `var(--${tk.status?.color || 'gray'})`,
+              }"
             />
 
             <div class="flex items-center gap-2.5 w-fit">
