@@ -1,19 +1,23 @@
 <script setup lang="ts">
 import { PlusIcon } from "@lucide/vue";
+
 const { statuses, getStatuses } = useStatuses();
 await getStatuses();
-
-const openModal = ref(false);
 const error = ref("");
-const ticket = useTicketsStore();
+
 const form = reactive({
   title: "",
   description: "",
   status: statuses.value[0]?.id ?? "",
 });
+const ticket = useTicketsStore();
+
+const openModal = defineModel<boolean>("openModal", {
+  default: false,
+});
 
 const handleCreate = async () => {
-  if (!form.title && !form.description) {
+  if (!form.title || !form.description) {
     error.value = "Пожалуйста, заполните все поля";
     return;
   }
@@ -22,37 +26,19 @@ const handleCreate = async () => {
   openModal.value = false;
 };
 
-watch(
-  () => openModal.value,
-  (val) => {
-    setTimeout(() => {
-      if (!val) {
-        form.title = "";
-        form.description = "";
-        form.status = statuses.value[0]?.id ?? "";
-        error.value = "";
-      }
-    }, 300);
-  },
-);
-
-withDefaults(
-  defineProps<{
-    title?: string;
-  }>(),
-  {
-    title: "Обзор",
-  },
-);
+watch(openModal, (val) => {
+  setTimeout(() => {
+    if (!val) {
+      form.title = "";
+      form.description = "";
+      form.status = statuses.value[0]?.id ?? "";
+      error.value = "";
+    }
+  }, 300);
+});
 </script>
 
 <template>
-  <div class="flex items-end justify-between px-5 max-h-fit mt-5">
-    <h1 class="text-3xl font-medium">{{ title }}</h1>
-    <UIButtonBase :icon="PlusIcon" @click="openModal = !openModal">
-      Добавить инцидент
-    </UIButtonBase>
-  </div>
   <UIModal v-model:openModal="openModal" title="Новый инциндент">
     <input
       v-model="form.title"
