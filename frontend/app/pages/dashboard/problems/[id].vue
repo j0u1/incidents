@@ -113,50 +113,30 @@ const returnToProblems = () => {
     </div>
   </div>
 
-  <Transition name="modal">
-    <div
-      v-if="openModal"
-      class="absolute flex items-center justify-center top-0 left-0 size-full bg-black/20 backdrop-blur-sm z-10"
-    >
-      <XIcon class="absolute top-5 right-5 cursor-pointer" @click="openModal = false" />
-
-      <div class="border border-border bg-secondary rounded-2xl p-4">
-        <h3 class="text-2xl font-medium mb-4">Редактировать инцидент</h3>
-        <div class="flex flex-col gap-4">
-          <input
-            v-model="form.title"
-            type="text"
-            placeholder="Название инцидента"
-            class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
-          />
-          <select
-            v-model="form.status"
-            class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
-          >
-            <option v-for="status in statuses" :key="status.id" :value="status.id">
-              {{ status.name }}
-            </option>
-          </select>
-          <textarea
-            v-model="form.description"
-            placeholder="Описание инцидента"
-            class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
-          />
-          <UIButtonBase @click="handleEdit" :icon="SaveIcon"> Сохранить </UIButtonBase>
-          <UIButtonBase @click="handleDelete" :icon="TrashIcon"> Удалить </UIButtonBase>
-        </div>
-      </div>
+  <UIModal v-model:openModal="openModal" title="Редактировать инцидент">
+    <input
+      v-model="form.title"
+      type="text"
+      placeholder="Название инцидента"
+      class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+    <div class="grid gap-2">
+      <UIInputLabel label="Статус критичности" />
+      <select
+        v-model="form.status"
+        class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+      >
+        <option v-for="status in statuses" :key="status.id" :value="status.id">
+          {{ status.name }}
+        </option>
+      </select>
     </div>
-  </Transition>
+    <textarea
+      v-model="form.description"
+      placeholder="Описание инцидента"
+      class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+    <UIButtonBase @click="handleEdit" :icon="SaveIcon"> Сохранить </UIButtonBase>
+    <UIButtonBase @click="handleDelete" :icon="TrashIcon"> Удалить </UIButtonBase>
+  </UIModal>
 </template>
-
-<style scoped>
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.32s ease;
-}
-.modal-enter-from,
-.modal-leave-to {
-  opacity: 0;
-}
-</style>
