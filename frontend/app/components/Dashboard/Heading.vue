@@ -22,6 +22,20 @@ const handleCreate = async () => {
   openModal.value = false;
 };
 
+watch(
+  () => openModal.value,
+  (val) => {
+    setTimeout(() => {
+      if (!val) {
+        form.title = "";
+        form.description = "";
+        form.status = statuses.value[0]?.id ?? "";
+        error.value = "";
+      }
+    }, 300);
+  },
+);
+
 withDefaults(
   defineProps<{
     title?: string;
