@@ -42,7 +42,7 @@ useSeoMeta({
 
 const handleDelete = async () => {
   await ticket.deleteTicket(id as string);
-  navigateTo("/dashboard/problems");
+  history.back();
 };
 
 const openModal = ref(false);
