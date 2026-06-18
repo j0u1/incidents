@@ -1,4 +1,4 @@
-import type { Status } from "~/types/Status";
+import type { Status } from "~/types/status";
 
 const statuses = ref<Status[]>([]);
 

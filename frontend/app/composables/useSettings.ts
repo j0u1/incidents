@@ -1,4 +1,4 @@
-import type { Settings } from "~/types/Settings";
+import type { Settings } from "~/types/settings";
 
 export function useSettings() {
   const api = useApi();

@@ -1,4 +1,4 @@
-import type { Ticket } from "~/types/Ticket";
+import type { Ticket } from "~/types/ticket";
 
 export const useTicketsStore = defineStore("tickets", () => {
   const api = useApi();
