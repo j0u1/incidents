@@ -78,7 +78,7 @@ watch(openModal, (val) => {
       />
     </div>
     <UIButtonBase
-      @click.prevent="isSending === false && handleCreate()"
+      @click.prevent="handleCreate()"
       :icon="!isSending ? PlusIcon : Loader2Icon"
       :disabled="isSending"
       :class="cn(isSending === true && '[&>svg]:animate-spin cursor-progress!')"
