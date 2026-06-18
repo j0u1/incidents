@@ -25,7 +25,7 @@ const emit = defineEmits<{
       <div
         v-if="type === 'password'"
         @click="showPassword = !showPassword"
-        class="flex items-center gap-1.5 text-gray text-sm hover:text-primary duration-300 transition-all cursor-pointer"
+        class="flex items-center gap-1.5 text-gray text-sm hover:text-primary duration-300 transition-all cursor-pointer select-none"
       >
         {{ !showPassword ? "Показать пароль" : "Скрыть пароль" }}
       </div>
