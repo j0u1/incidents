@@ -1,8 +1,12 @@
 <script setup lang="ts">
 const ticket = useTicketsStore();
-
 const { statuses, getStatuses } = useStatuses();
-await getStatuses();
+const isLoading = ref(true);
+
+onMounted(async () => {
+  await getStatuses();
+  isLoading.value = false;
+});
 
 const ticketCountByStatus = computed(() => {
   const counts: Record<string, number> = {};
@@ -19,13 +23,19 @@ const ticketCountByStatus = computed(() => {
 <template>
   <Transition name="statuses" mode="out-in">
     <div
-      v-if="statuses.length > 0"
+      v-if="isLoading"
+      class="flex items-center justify-center text-sm text-gray border border-border w-full min-h-29.5 rounded-3xl"
+    >
+      Идёт загрузка статусов...
+    </div>
+    <div
+      v-else-if="statuses.length > 0"
       class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 duration-300 transition-all"
     >
       <div
         v-for="ps in statuses"
         :key="ps.id"
-        class="relative rounded-lg border border-border py-3 px-3.5 gap-2.5 group/status"
+        class="relative rounded-lg border border-border py-3 px-3.5 gap-2.5 group/status min-h-29.5"
       >
         <div
           class="absolute -top-1 -left-1 size-3.5 rounded-full"
