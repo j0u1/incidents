@@ -18,6 +18,7 @@ onClickOutside(dropDownRef, () => {
       class="relative border border-border p-2.5 rounded-lg space-y-0 bg-bg duration-200 transition-all"
       :class="[isCollapsed ? 'min-w-19.75' : 'w-3/14 min-w-56']"
     >
+      <div @click="clickCollapsed" class="absolute -right-4 top-0 h-full w-6" />
       <div class="m-2.5 pb-3">
         <NuxtLink to="/">
           <IconsLogosFull :centered="isCollapsed" />
