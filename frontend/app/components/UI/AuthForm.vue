@@ -75,10 +75,8 @@ async function handleSignIn() {
   });
 
   if (error) {
-    if (error.code === "INVALID_EMAIL_OR_PASSWORD") {
+    if (error.code === "INVALID_EMAIL_OR_PASSWORD" || error.message === "Invalid email") {
       authError.value = "Неверный логин или пароль";
-    } else if (error.message === "Invalid email") {
-      authError.value = "Не существует такой почты";
     } else {
       authError.value = "Ошибка входа: " + error.message;
     }
@@ -89,7 +87,7 @@ async function handleSignIn() {
 </script>
 
 <template>
-  <section class="mx-auto max-w-md h-dvh flex flex-col gap-6 justify-center">
+  <section class="mx-auto max-w-sm w-full h-dvh flex flex-col gap-6 justify-center">
     <div class="mx-auto flex gap-2 items-center">
       <NuxtLink to="/">
         <IconsLogosFull />
@@ -115,7 +113,7 @@ async function handleSignIn() {
           <UIButtonBase type="submit" :icon="LogInIcon">
             {{ isLogin ? "Войти" : "Зарегистрироваться" }}
           </UIButtonBase>
-          <UIButtonBase @click="signInWithGithub" :icon="GitHub" class="w-full">
+          <UIButtonBase @click="signInWithGithub" :icon="GitHub" class="w-full" type="button">
             GitHub
           </UIButtonBase>
         </div>
