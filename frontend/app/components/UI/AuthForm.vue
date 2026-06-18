@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ArrowRightIcon, LockIcon, LogInIcon, MailIcon, type LucideIcon } from "@lucide/vue";
 import GitHub from "~/components/Icons/GitHub.vue";
+import type { Form } from "~/types/form";
 
 const { signIn } = useAuth();
 const authError = ref("");
@@ -56,11 +57,6 @@ const props = withDefaults(
     ],
   },
 );
-
-type Form = {
-  email: string;
-  password: string;
-};
 
 const form = reactive<Form>({
   email: "",
