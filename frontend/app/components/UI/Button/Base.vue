@@ -69,16 +69,30 @@ const classes = computed(() => {
   @apply bg-bg cursor-pointer text-light-gray fill-light-gray items-center flex gap-2.5 transition-all duration-300 outline outline-transparent hover:fill-primary;
 }
 
+.btn:disabled {
+  @apply opacity-50;
+}
+
 .btn-primary {
   @apply border border-border rounded-lg flex hover:border-primary hover:text-primary;
+}
+.btn-primary:disabled {
+  @apply border border-border rounded-lg flex;
 }
 
 .btn-secondary {
   @apply bg-secondary rounded-lg flex gap-2.5 border border-transparent hover:border-primary transition-all hover:text-primary;
 }
 
+.btn-secondary:disabled {
+  @apply bg-secondary rounded-lg flex gap-2.5 border border-transparent transition-all hover:text-primary;
+}
+
 .btn-filled {
   @apply border border-border bg-secondary rounded-lg flex gap-2.5 transition-all hover:border-primary;
+}
+.btn-filled {
+  @apply border border-border bg-secondary rounded-lg flex gap-2.5 transition-all;
 }
 
 .btn.btn-muted:is(a) {
