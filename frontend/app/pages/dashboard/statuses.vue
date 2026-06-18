@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PenIcon, PlusIcon, SaveIcon, TrashIcon, XIcon } from "@lucide/vue";
+import { Loader2Icon, PenIcon, PlusIcon, SaveIcon, TrashIcon, XIcon } from "@lucide/vue";
 
 definePageMeta({
   layout: "sidebar",
@@ -9,6 +9,7 @@ definePageMeta({
 const { createStatus, statuses, getStatuses, updateStatus, deleteStatus } = useStatuses();
 await getStatuses();
 
+const isSending = ref(false);
 const openModal = ref(false);
 const error = ref("");
 const isEditing = ref(false);
@@ -39,6 +40,8 @@ const openEdit = (status: (typeof statuses.value)[0]) => {
 };
 
 const handleSubmit = async () => {
+  isSending.value = true;
+
   if (!form.name || !form.color) {
     error.value = "Пожалуйста, заполните обязательные поля";
     return;
@@ -49,6 +52,7 @@ const handleSubmit = async () => {
     await createStatus(form.name, form.color, form.description);
   }
   openModal.value = false;
+  isSending.value = false;
 };
 
 const colors = ["red", "orange", "green", "primary", "gray", "purple", "blue", "yellow", "pink"];
@@ -80,8 +84,9 @@ const handleDelete = async (id: string) => {
         <TrashIcon class="icon hover:text-red" @click.stop="handleDelete(status.id)" />
       </div>
     </UIButtonBase>
-
-    <UIButtonBase @click="openCreate" :icon="PlusIcon" position="left"> Создать </UIButtonBase>
+    <UIButtonBase @click.prevent="openCreate" :icon="PlusIcon" position="left" type="button">
+      Создать
+    </UIButtonBase>
   </div>
 
   <UIModal
@@ -110,8 +115,14 @@ const handleDelete = async (id: string) => {
       class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
     />
     <div class="flex gap-2 w-full">
-      <UIButtonBase @click="handleSubmit" :icon="isEditing ? SaveIcon : PlusIcon" class="w-full">
-        {{ isEditing ? "Сохранить" : "Создать" }}
+      <UIButtonBase
+        @click="handleSubmit()"
+        :icon="isEditing ? SaveIcon : !isSending ? PlusIcon : Loader2Icon"
+        class="w-full"
+        :disabled="isSending"
+        :class="cn(isSending === true && '[&>svg]:animate-spin cursor-progress!')"
+      >
+        {{ isEditing ? "Сохранить" : !isSending ? "Создать" : "Создание статуса..." }}
       </UIButtonBase>
       <UIButtonBase
         v-if="isEditing"
