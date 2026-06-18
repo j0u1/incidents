@@ -29,7 +29,7 @@ watch(
 <template>
   <dialog
     ref="dialogRef"
-    class="absolute flex items-center justify-center top-0 left-0 size-full m-0 p-0 max-w-none max-h-none bg-black/20 backdrop-blur-sm z-1 text-white"
+    class="fixed flex items-center justify-center top-0 left-0 size-full m-0 p-0 max-w-none max-h-none bg-black/20 backdrop-blur-sm z-1 text-white"
     @click.self="emit('update:openModal', false)"
     @close="emit('update:openModal', false)"
   >
