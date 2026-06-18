@@ -17,8 +17,8 @@ const openModal = defineModel<boolean>("openModal", {
 });
 
 const handleCreate = async () => {
-  if (!form.title || !form.description) {
-    error.value = "Пожалуйста, заполните все поля";
+  if (!form.title) {
+    error.value = "Пожалуйста, добавьте название";
     return;
   }
 
@@ -40,13 +40,16 @@ watch(openModal, (val) => {
 
 <template>
   <UIModal v-model:openModal="openModal" title="Новый инциндент">
-    <input
-      v-model="form.title"
-      type="text"
-      placeholder="Название инцидента"
-      class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
-    />
-    <div class="grid gap-2">
+    <div class="flex flex-col gap-2">
+      <UIInputLabel label="Название инцидента*" />
+      <input
+        v-model="form.title"
+        type="text"
+        placeholder="Название инцидента"
+        class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+    <div class="flex flex-col gap-2">
       <UIInputLabel label="Статус критичности" />
       <select
         v-model="form.status"
@@ -57,11 +60,14 @@ watch(openModal, (val) => {
         </option>
       </select>
     </div>
-    <textarea
-      v-model="form.description"
-      placeholder="Описание инцидента"
-      class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
-    />
+    <div class="flex flex-col gap-2">
+      <UIInputLabel label="Описание" />
+      <textarea
+        v-model="form.description"
+        placeholder="Описание инцидента"
+        class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
     <UIButtonBase @click="handleCreate" :icon="PlusIcon"> Создать </UIButtonBase>
   </UIModal>
 </template>
