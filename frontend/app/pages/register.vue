@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { padding } from "~/data/dynamicStyles";
 import { MailIcon, LockIcon, ArrowRightIcon, LogInIcon, TypeIcon } from "@lucide/vue";
+import { features } from "~/config/features";
 
 definePageMeta({
   layout: "auth",
+  middleware: () => {
+    if (!features.register) return navigateTo('/login')
+  }
 });
 
 const error = ref("");

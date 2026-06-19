@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ArrowRightIcon, LockIcon, LogInIcon, MailIcon, type LucideIcon } from "@lucide/vue";
 import GitHub from "~/components/Icons/GitHub.vue";
+import { features } from "~/config/features";
 import type { Form } from "~/types/form";
 
 const { signIn } = useAuth();
@@ -118,6 +119,7 @@ async function handleSignIn() {
 
     <div class="relative text-center">
       <NuxtLink
+        v-if="features.register"
         class="text-sm text-gray duration-300 transition-all mx-auto group/reg"
         to="/register"
       >

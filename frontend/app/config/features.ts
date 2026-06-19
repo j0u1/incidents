@@ -5,4 +5,5 @@ export const features = {
   settings: false,
   statuses: true, // от статусов зависит статистика по статусам
   stats: false,
+  register: false, // закрытие регистрации
 };
