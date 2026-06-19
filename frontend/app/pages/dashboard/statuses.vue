@@ -93,11 +93,11 @@ const handleDelete = async (id: string) => {
     v-model:openModal="openModal"
     :title="isEditing ? 'Редактировать статус' : 'Новый статус'"
   >
-    <input
+    <UIInput
+      label="Название статуса"
       v-model="form.name"
       type="text"
-      placeholder="Название статуса"
-      class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+      placeholder="Например, «Критично»"
     />
     <div class="flex gap-2">
       <div
@@ -109,11 +109,15 @@ const handleDelete = async (id: string) => {
         :class="form.color === color ? 'ring-2 ring-offset-2 ring-white' : ''"
       />
     </div>
-    <textarea
-      v-model="form.description"
-      placeholder="Описание статуса"
-      class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
-    />
+
+    <div>
+      <UIInputLabel label="Описание статуса" />
+      <textarea
+        v-model="form.description"
+        placeholder="Например, Нужно срочно исправить"
+        class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
     <div class="flex gap-2 w-full">
       <UIButtonBase
         @click="handleSubmit()"
