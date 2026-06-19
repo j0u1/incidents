@@ -35,8 +35,8 @@ const emit = defineEmits<{
     >
       <component :is="icon" class="absolute left-4 size-4.5 pointer-events-none" />
       <input
-        class="pl-12 w-full bg-transparent outline-none text-light-gray"
-        :class="padding"
+        class=" w-full bg-transparent outline-none text-light-gray"
+        :class="[padding, icon && 'pl-12']"
         :type="type === 'password' ? (showPassword ? 'text' : 'password') : type"
         :placeholder="placeholder"
         :value="modelValue"
