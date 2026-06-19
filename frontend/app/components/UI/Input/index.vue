@@ -5,7 +5,7 @@ import { type LucideIcon } from "@lucide/vue";
 const showPassword = ref(false);
 
 defineProps<{
-  label: string;
+  label?: string;
   additionalText?: string;
   placeholder: string;
   icon?: LucideIcon;
@@ -21,7 +21,7 @@ const emit = defineEmits<{
 <template>
   <div class="flex flex-col gap-2">
     <div class="flex items-center justify-between">
-      <UIInputLabel :label="label" :additionalText="additionalText" />
+      <UIInputLabel v-if="label" :label="label" :additionalText="additionalText" />
       <div
         v-if="type === 'password'"
         @click="showPassword = !showPassword"
