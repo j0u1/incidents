@@ -13,6 +13,7 @@ const handleDelete = async (id: string) => {
 
 defineProps<{
   isShort?: boolean;
+  isGrid?: boolean;
 }>();
 </script>
 
@@ -20,10 +21,15 @@ defineProps<{
   <Transition name="problems" mode="out-in">
     <div
       v-if="ticket.tickets.length > 0"
-      class="flex flex-col gap-2.5 w-full lg:pb-6"
+      class="gap-2.5 w-full lg:pb-6"
+      :class="isGrid ? 'grid xl:grid-cols-2' : 'flex flex-col'"
     >
       <NuxtLink
-        v-for="tk in isShort ? ticket.tickets.slice(0, 9) : ticket.tickets"
+        v-for="tk in isShort
+          ? isGrid
+            ? ticket.tickets.slice(0, 19)
+            : ticket.tickets.slice(0, 8)
+          : ticket.tickets"
         :key="tk.id"
         :to="`/dashboard/problems/${tk.id}`"
         class="relative flex justify-between border border-border rounded-lg group p-4 gap-4"
