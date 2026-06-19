@@ -4,7 +4,7 @@ import { features } from "~/config/features";
 
 <template>
   <div class="flex flex-col xl:flex-row duration-300 transition-all gap-6">
-    <DashboardOverviewLatestProblems :isShort="features.stats" v-if="features.problems" />
+    <DashboardOverviewLatestProblems isShort v-if="features.problems" />
     <DashboardOverviewStats v-if="features.stats" />
   </div>
 </template>

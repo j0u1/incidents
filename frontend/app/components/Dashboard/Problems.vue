@@ -21,10 +21,9 @@ defineProps<{
     <div
       v-if="ticket.tickets.length > 0"
       class="flex flex-col gap-2.5 w-full"
-      :class="isShort && 'max-w-1/2'"
     >
       <NuxtLink
-        v-for="tk in isShort ? ticket.tickets.slice(0, 5) : ticket.tickets"
+        v-for="tk in isShort ? ticket.tickets.slice(0, 9) : ticket.tickets"
         :key="tk.id"
         :to="`/dashboard/problems/${tk.id}`"
         class="relative flex justify-between border border-border rounded-lg group p-4 gap-4"
