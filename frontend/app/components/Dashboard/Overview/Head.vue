@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SearchIcon } from "@lucide/vue";
+import { Grid2X2Icon, SearchIcon } from "@lucide/vue";
 
 const search = ref("");
 
