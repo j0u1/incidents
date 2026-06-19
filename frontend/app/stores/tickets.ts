@@ -6,11 +6,13 @@ export const useTicketsStore = defineStore("tickets", () => {
   const fetchUrl = "/api/tickets";
 
   const getTickets = async () => {
-    tickets.value = await api<Ticket[]>(fetchUrl);
+    const data = await api<Ticket[]>(fetchUrl);
+    tickets.value = data.sort((a,b) => b.number - a.number)
   };
 
   const getTicketById = async (id: string) => {
     return await api<Ticket>(`${fetchUrl}/${id}`);
+
   };
 
   const createTicket = async (title: string, description?: string, statusId?: string) => {
