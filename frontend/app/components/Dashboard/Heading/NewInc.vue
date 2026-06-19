@@ -50,7 +50,7 @@ watch(openModal, (val) => {
 <template>
   <UIModal v-model:openModal="openModal" title="Новый инциндент">
     <div class="flex flex-col gap-2">
-      <UIInputLabel label="Название инцидента*" />
+      <UIInputLabel label="Название инцидента" required />
       <input
         v-model="form.title"
         type="text"
@@ -59,7 +59,7 @@ watch(openModal, (val) => {
       />
     </div>
     <div class="flex flex-col gap-2">
-      <UIInputLabel label="Статус критичности" />
+      <UIInputLabel label="Статус критичности" required />
       <select
         v-model="form.status"
         class="w-full px-3 py-2 rounded border border-border bg-transparent focus:outline-none focus:ring-2 focus:ring-primary"
