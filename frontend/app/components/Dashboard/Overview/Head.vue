@@ -3,9 +3,9 @@ import { Grid2X2Icon, SearchIcon } from "@lucide/vue";
 
 const search = ref("");
 
-defineProps<{
-  isGrid: boolean;
-}>();
+const isGrid = defineModel<boolean>('isGrid', {required: true})
+
+const emit = defineEmits<{ "update:isGrid": [value: boolean] }>();
 </script>
 
 <template>
