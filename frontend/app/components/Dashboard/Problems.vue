@@ -20,7 +20,7 @@ defineProps<{
   <Transition name="problems" mode="out-in">
     <div
       v-if="ticket.tickets.length > 0"
-      class="flex flex-col gap-2.5 w-full"
+      class="flex flex-col gap-2.5 w-full lg:pb-6"
     >
       <NuxtLink
         v-for="tk in isShort ? ticket.tickets.slice(0, 9) : ticket.tickets"
