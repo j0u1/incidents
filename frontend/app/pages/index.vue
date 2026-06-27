@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components";
-import { LayoutIcon, LogInIcon } from "@lucide/vue";
+import { LayoutIcon, LoaderIcon as Loader2Icon, LogInIcon } from "@lucide/vue";
 
 const authClient = useAuth();
 const session = authClient.useSession();
@@ -20,8 +20,9 @@ const session = authClient.useSession();
       href="/login"
       variant="filled"
       :icon="LogInIcon"
+      :isLoading="session.isPending"
     >
-      Войти в систему
+      {{ session.isPending ? "Загрузка..." : "Войти в систему" }}
     </UIButtonBase>
     <UIButtonBase v-else :as="NuxtLink" href="/dashboard" variant="filled" :icon="LayoutIcon">
       Перейти в Обзор
