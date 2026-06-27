@@ -29,6 +29,9 @@ const session = authClient.useSession();
     <NuxtImg
       class="max-w-11/12 mx-auto rounded-t-2xl outline outline-border w-full"
       src="/images/preview.webp"
+      preload
+      fetchpriority="high"
+      :placeholder="[1280, 570, 10, 20]"
     />
   </main>
 </template>
