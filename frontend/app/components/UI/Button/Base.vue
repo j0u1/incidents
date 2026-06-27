@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LucideIcon } from "@lucide/vue";
+import { Loader2Icon, type LucideIcon } from "@lucide/vue";
 import { padding } from "~/data/dynamicStyles";
 import { NuxtLink } from "#components";
 
@@ -12,6 +12,7 @@ const props = defineProps<{
   position?: "left" | "right" | "center";
   page?: { path: string; exact?: boolean };
   muted?: boolean;
+  isLoading?: boolean;
 }>();
 
 const variants = {
@@ -45,7 +46,12 @@ const classes = computed(() => {
     :class="classes"
     :href="props.as === NuxtLink ? (props.href ?? props.page?.path ?? '/') : undefined"
   >
-    <component v-if="props.icon" :is="props.icon" class="size-4.5 shrink-0" />
+    <component
+      v-if="props.icon"
+      :is="isLoading ? Loader2Icon : props.icon"
+      class="size-4.5 shrink-0"
+      :class="isLoading && 'animate-spin'"
+    />
     <slot />
   </component>
 </template>
