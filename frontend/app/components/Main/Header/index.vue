@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components";
 import { LogInIcon } from "@lucide/vue";
+import { onClickOutside } from "@vueuse/core";
 
 const authClient = useAuth();
 const session = authClient.useSession();
 const isMenuOpen = ref(false);
+const menuRef = ref(null);
+
+onClickOutside(menuRef, () => {
+  isMenuOpen.value = false;
+});
 </script>
 
 <template>
@@ -18,7 +24,7 @@ const isMenuOpen = ref(false);
           class="fill-gray hover:fill-light-gray duration-300 transition-all hover:scale-105 active:105 size-6"
         />
       </NuxtLink>
-      <div class="relative">
+      <div class="relative" ref="menuRef">
         <UIButtonBase
           v-if="!session.data?.session"
           :as="NuxtLink"
@@ -32,7 +38,8 @@ const isMenuOpen = ref(false);
           <UIAvatar
             @click="isMenuOpen = !isMenuOpen"
             :src="session.data.user.image ?? undefined"
-            class="size-8 cursor-pointer"
+            class="size-8 cursor-pointer ring-2 ring-primary ring-offset-bg"
+            :class="isMenuOpen ? 'ring-offset-0' : 'ring-offset-2'"
           />
           <UIDropDown v-model="isMenuOpen" :session="session" />
         </template>
