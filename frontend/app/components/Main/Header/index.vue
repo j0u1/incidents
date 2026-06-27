@@ -26,7 +26,7 @@ onClickOutside(menuRef, () => {
       </NuxtLink>
       <div class="relative" ref="menuRef">
         <UIButtonBase
-          v-if="!session.data?.session"
+          v-if="!session.data?.session && !session.isPending"
           :as="NuxtLink"
           href="/login"
           variant="filled"
@@ -34,10 +34,11 @@ onClickOutside(menuRef, () => {
         >
           Войти
         </UIButtonBase>
+        <div v-else-if="session.isPending" class="size-8 bg-gray animate-pulse rounded-full" title="Загиузка профиля..." />
         <template v-else>
           <UIAvatar
             @click="isMenuOpen = !isMenuOpen"
-            :src="session.data.user.image ?? undefined"
+            :src="session.data?.user.image ?? undefined"
             class="size-8 cursor-pointer ring-2 ring-primary ring-offset-bg"
             :class="isMenuOpen ? 'ring-offset-0' : 'ring-offset-2'"
           />
